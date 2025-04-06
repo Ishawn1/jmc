@@ -1,0 +1,46 @@
+{
+  "@@locale": "hi",
+
+  "appTitle": "जेएमसी ऐप",
+  "loginScreenTitle": "जेएमसी ऐप लॉगिन",
+  "loginWelcomeMessage": "जेएमसी में आपका स्वागत है",
+  "loginUsernameLabel": "उपयोगकर्ता नाम या मोबाइल नंबर",
+  "loginPasswordLabel": "पासवर्ड",
+  "loginButtonText": "लॉगिन",
+  "loginForgotPassword": "पासवर्ड भूल गए?",
+  "loginForgotPasswordSnackbar": "पासवर्ड भूल गए? क्लिक किया गया (लागू नहीं)",
+
+  "servicesScreenTitle": "सेवाएं",
+  "servicesFilterChipAll": "सभी",
+  "servicesFilterChipGrievance": "शिकायत",
+  "servicesFilterChipCertificates": "प्रमाणपत्र",
+  "servicesFilterChipEmergency": "आपातकालीन सेवाएं",
+  "servicesFilterChipBills": "बिल",
+  "servicesFilterChipTaxes": "कर",
+  "servicesFilterChipLicenses": "लाइसेंस",
+  "servicesFilterChipInfo": "जानकारी",
+  "servicesHeader": "सभी सेवाएं",
+  "servicesFilterSortTooltip": "फ़िल्टर/सॉर्ट",
+  "servicesFilterSortSnackbar": "फ़िल्टर/सॉर्ट टैप किया गया (लागू नहीं)",
+
+  "updatesScreenTitle": "अपडेट",
+  "mapsScreenTitle": "नक्शे",
+  "downloadsScreenTitle": "डाउनलोड",
+
+  "bottomNavServices": "सेवाएं",
+  "bottomNavUpdates": "अपडेट",
+  "bottomNavMaps": "नक्शे",
+  "bottomNavDownloads": "डाउनलोड",
+
+  "serviceNamePropertyTax": "संपत्ति कर",
+  "serviceNameWaterBill": "पानी का बिल",
+  "serviceNameBirthCertificate": "जन्म प्रमाणपत्र",
+  "serviceNameDeathCertificate": "मृत्यु प्रमाणपत्र",
+  "serviceNameTradeLicense": "व्यापार लाइसेंस",
+  "serviceNameFileComplaint": "शिकायत दर्ज करें",
+  "serviceNameFeedback": "प्रतिक्रिया",
+  "serviceNameContactUs": "संपर्क करें",
+  "serviceNamePublicGrievance": "जन शिकायत",
+  "serviceNameFireDepartment": "अग्निशमन विभाग",
+  "serviceNameAmbulance": "एम्बुलेंस"
+}

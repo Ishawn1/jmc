@@ -1,0 +1,46 @@
+{
+  "@@locale": "gu",
+
+  "appTitle": "JMC એપ",
+  "loginScreenTitle": "JMC એપ લોગિન",
+  "loginWelcomeMessage": "JMC માં આપનું સ્વાગત છે",
+  "loginUsernameLabel": "વપરાશકર્તા નામ અથવા મોબાઇલ નંબર",
+  "loginPasswordLabel": "પાસવર્ડ",
+  "loginButtonText": "લોગિન",
+  "loginForgotPassword": "પાસવર્ડ ભૂલી ગયા છો?",
+  "loginForgotPasswordSnackbar": "પાસવર્ડ ભૂલી ગયા છો? ક્લિક કર્યું (અમલમાં નથી)",
+
+  "servicesScreenTitle": "સેવાઓ",
+  "servicesFilterChipAll": "બધી",
+  "servicesFilterChipGrievance": "ફરિયાદ",
+  "servicesFilterChipCertificates": "પ્રમાણપત્રો",
+  "servicesFilterChipEmergency": "ઇમરજન્સી સેવાઓ",
+  "servicesFilterChipBills": "બિલ",
+  "servicesFilterChipTaxes": "કર",
+  "servicesFilterChipLicenses": "લાયસન્સ",
+  "servicesFilterChipInfo": "માહિતી",
+  "servicesHeader": "બધી સેવાઓ",
+  "servicesFilterSortTooltip": "ફિલ્ટર/સૉર્ટ",
+  "servicesFilterSortSnackbar": "ફિલ્ટર/સૉર્ટ ટેપ કર્યું (અમલમાં નથી)",
+
+  "updatesScreenTitle": "અપડેટ્સ",
+  "mapsScreenTitle": "નકશા",
+  "downloadsScreenTitle": "ડાઉનલોડ્સ",
+
+  "bottomNavServices": "સેવાઓ",
+  "bottomNavUpdates": "અપડેટ્સ",
+  "bottomNavMaps": "નકશા",
+  "bottomNavDownloads": "ડાઉનલોડ્સ",
+
+  "serviceNamePropertyTax": "મિલકત વેરો",
+  "serviceNameWaterBill": "પાણીનું બિલ",
+  "serviceNameBirthCertificate": "જન્મ પ્રમાણપત્ર",
+  "serviceNameDeathCertificate": "મરણ પ્રમાણપત્ર",
+  "serviceNameTradeLicense": "ટ્રેડ લાયસન્સ",
+  "serviceNameFileComplaint": "ફરિયાદ નોંધાવો",
+  "serviceNameFeedback": "પ્રતિભાવ",
+  "serviceNameContactUs": "સંપર્ક કરો",
+  "serviceNamePublicGrievance": "જાહેર ફરિયાદ",
+  "serviceNameFireDepartment": "ફાયર વિભાગ",
+  "serviceNameAmbulance": "એમ્બ્યુલન્સ"
+}

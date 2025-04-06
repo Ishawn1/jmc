@@ -1,0 +1,50 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "JMC App",
+  "@appTitle": {
+    "description": "The main title of the application"
+  },
+
+  "loginScreenTitle": "JMC App Login",
+  "loginWelcomeMessage": "Welcome to JMC",
+  "loginUsernameLabel": "Username or Mobile Number",
+  "loginPasswordLabel": "Password",
+  "loginButtonText": "Login",
+  "loginForgotPassword": "Forgot Password?",
+  "loginForgotPasswordSnackbar": "Forgot Password clicked (not implemented)",
+
+  "servicesScreenTitle": "Services",
+  "servicesFilterChipAll": "All",
+  "servicesFilterChipGrievance": "Grievance",
+  "servicesFilterChipCertificates": "Certificates",
+  "servicesFilterChipEmergency": "Emergency Services",
+  "servicesFilterChipBills": "Bills",
+  "servicesFilterChipTaxes": "Taxes",
+  "servicesFilterChipLicenses": "Licenses",
+  "servicesFilterChipInfo": "Info",
+  "servicesHeader": "All Services",
+  "servicesFilterSortTooltip": "Filter/Sort",
+  "servicesFilterSortSnackbar": "Filter/Sort Tapped (Not Implemented)",
+
+  "updatesScreenTitle": "Updates",
+  "mapsScreenTitle": "Maps",
+  "downloadsScreenTitle": "Downloads",
+
+  "bottomNavServices": "Services",
+  "bottomNavUpdates": "Updates",
+  "bottomNavMaps": "Maps",
+  "bottomNavDownloads": "Downloads",
+
+  "serviceNamePropertyTax": "Property Tax",
+  "serviceNameWaterBill": "Water Bill",
+  "serviceNameBirthCertificate": "Birth Certificate",
+  "serviceNameDeathCertificate": "Death Certificate",
+  "serviceNameTradeLicense": "Trade License",
+  "serviceNameFileComplaint": "File Complaint",
+  "serviceNameFeedback": "Feedback",
+  "serviceNameContactUs": "Contact Us",
+  "serviceNamePublicGrievance": "Public Grievance",
+  "serviceNameFireDepartment": "Fire Department",
+  "serviceNameAmbulance": "Ambulance"
+}
