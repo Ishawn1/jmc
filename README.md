@@ -45,6 +45,4 @@ A Flutter application for accessing Jamnagar Municipal Corporation (JMC) service
 
 Contributions are welcome! Please follow standard fork & pull request workflows.
 
-## License
 
-(Specify license if applicable, e.g., MIT License)
