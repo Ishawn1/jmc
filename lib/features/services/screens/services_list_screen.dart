@@ -5,63 +5,80 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generate
 import '../../../constants/colors.dart'; // Import colors for styling
 import 'service_detail_screen.dart'; // To navigate to detail screen
 
-// --- MOCK DATA ---
-// Replace these with actual services and categories later
-final List<ServiceItem> mockServiceItems = [
-  const ServiceItem(id: 'prop_tax', name: 'Property Tax', icon: Icons.house_rounded, category: 'Taxes'),
-  const ServiceItem(id: 'water_bill', name: 'Water Bill', icon: Icons.water_drop, category: 'Bills'),
-  const ServiceItem(id: 'birth_cert', name: 'Birth Certificate', icon: Icons.cake, category: 'Certificates'),
-  const ServiceItem(id: 'death_cert', name: 'Death Certificate', icon: Icons.book, category: 'Certificates'),
-  const ServiceItem(id: 'trade_license', name: 'Trade License', icon: Icons.store, category: 'Licenses'),
-  const ServiceItem(id: 'complaint', name: 'File Complaint', icon: Icons.report_problem, category: 'Grievance'),
-  const ServiceItem(id: 'feedback', name: 'Feedback', icon: Icons.feedback, category: 'Grievance'),
-  const ServiceItem(id: 'contact_us', name: 'Contact Us', icon: Icons.contact_phone, category: 'Info'),
-  const ServiceItem(id: 'public_grievance', name: 'Public Grievance', icon: Icons.group, category: 'Grievance'),
-  const ServiceItem(id: 'fire_dept', name: 'Fire Department', icon: Icons.local_fire_department, category: 'Emergency Services'),
-  const ServiceItem(id: 'ambulance', name: 'Ambulance', icon: Icons.emergency, category: 'Emergency Services'),
+// --- SERVICE DATA (Based on instructionforcline.txt) ---
+// Categories defined based on the structure in the instructions file
+const String catTax = 'Tax Services';
+const String catCertificate = 'Certificate Services';
+const String catApplication = 'Application Services';
+const String catOther = 'Other Services/Information';
+
+final List<ServiceItem> serviceItems = [
+  // Tax Services
+  const ServiceItem(id: 'tax_prop_water_pay', name: 'Property Tax / Water Charges (Online Payment)', icon: Icons.receipt_long, category: catTax),
+  const ServiceItem(id: 'tax_prof_pay_cert', name: 'Professional Tax (Online Payment & Certificate)', icon: Icons.work_history, category: catTax), // Changed icon
+  const ServiceItem(id: 'tax_prop_app', name: 'Property Tax Application (Application)', icon: Icons.description, category: catTax),
+
+  // Certificate Services
+  const ServiceItem(id: 'cert_birth', name: 'Birth Certificate', icon: Icons.cake, category: catCertificate),
+  const ServiceItem(id: 'cert_death', name: 'Death Certificate', icon: Icons.book_online, category: catCertificate), // Changed icon
+  const ServiceItem(id: 'cert_marriage', name: 'Marriage Certificate', icon: Icons.family_restroom, category: catCertificate),
+  const ServiceItem(id: 'cert_food', name: 'Food Certificate', icon: Icons.restaurant, category: catCertificate),
+  const ServiceItem(id: 'cert_shop_est', name: 'Shop & Establishment Certificate', icon: Icons.store, category: catCertificate),
+  const ServiceItem(id: 'cert_factory_license', name: 'Factory License Certificate', icon: Icons.factory, category: catCertificate),
+  const ServiceItem(id: 'cert_prof_tax', name: 'Professional Tax Certificate', icon: Icons.badge, category: catCertificate), // Changed icon
+
+  // Application Services
+  const ServiceItem(id: 'app_online', name: 'Online Application', icon: Icons.web, category: catApplication),
+  const ServiceItem(id: 'app_check_status', name: 'Check Application Status', icon: Icons.search_sharp, category: catApplication), // Changed icon
+  const ServiceItem(id: 'app_dev_permission', name: 'Development Permission Application', icon: Icons.construction, category: catApplication), // Changed icon
+  const ServiceItem(id: 'app_factory_license', name: 'Factory License Application', icon: Icons.factory, category: catApplication),
+
+  // Other Services/Information
+  const ServiceItem(id: 'other_dev_collect_pay', name: 'Development Collection Charges (Online Payment)', icon: Icons.payment, category: catOther),
+  const ServiceItem(id: 'other_water_meter_pay', name: 'Water Meter Charges (Online Payment)', icon: Icons.water_damage, category: catOther), // Changed icon
+  const ServiceItem(id: 'other_complaints', name: 'Complaints (Others)', icon: Icons.report_problem, category: catOther),
+  const ServiceItem(id: 'other_hospital_user', name: 'Hospital User (Others)', icon: Icons.local_hospital, category: catOther),
+  const ServiceItem(id: 'other_arch_eng_login', name: 'Architecture/Engineer Login (Others)', icon: Icons.engineering, category: catOther),
+  const ServiceItem(id: 'other_town_planning', name: 'For Town Planning (Others)', icon: Icons.map, category: catOther),
+  const ServiceItem(id: 'other_vendor_reg', name: 'Vendor Registration (Others)', icon: Icons.person_add, category: catOther),
+  const ServiceItem(id: 'other_vehicle_dealer', name: 'Vehicle Dealer (Others)', icon: Icons.directions_car, category: catOther),
 ];
 
-// Mock filter categories (These keys will be used to look up localized strings)
+// Filter category keys based on the new categories
+// These keys need corresponding entries in app_en.arb etc.
 final List<String> filterCategoryKeys = [
-  'servicesFilterChipAll',
-  'servicesFilterChipGrievance',
-  'servicesFilterChipCertificates',
-  'servicesFilterChipEmergency',
-  'servicesFilterChipBills',
-  'servicesFilterChipTaxes',
-  'servicesFilterChipLicenses',
-  'servicesFilterChipInfo',
+  'servicesFilterChipAll', // Keep "All"
+  'servicesFilterChipTax',
+  'servicesFilterChipCertificate',
+  'servicesFilterChipApplication',
+  'servicesFilterChipOther',
 ];
-// --- END MOCK DATA ---
+// --- END SERVICE DATA ---
 
 // Helper function to get localized category name
 String _getLocalizedCategoryName(BuildContext context, String categoryKey) {
   final l10n = AppLocalizations.of(context)!;
+  // Map keys to localization strings (ensure these exist in your .arb files)
   switch (categoryKey) {
-    case 'servicesFilterChipAll': return l10n.servicesFilterChipAll; // "All"
-    case 'servicesFilterChipGrievance': return l10n.servicesFilterChipGrievance; // "Grievance"
-    case 'servicesFilterChipCertificates': return l10n.servicesFilterChipCertificates; // "Certificates"
-    case 'servicesFilterChipEmergency': return l10n.servicesFilterChipEmergency; // "Emergency Services"
-    case 'servicesFilterChipBills': return l10n.servicesFilterChipBills; // "Bills"
-    case 'servicesFilterChipTaxes': return l10n.servicesFilterChipTaxes; // "Taxes"
-    case 'servicesFilterChipLicenses': return l10n.servicesFilterChipLicenses; // "Licenses"
-    case 'servicesFilterChipInfo': return l10n.servicesFilterChipInfo; // "Info"
+    case 'servicesFilterChipAll': return l10n.servicesFilterChipAll;
+    // TODO: Add these keys to app_en.arb and other localization files
+    case 'servicesFilterChipTax': return l10n.servicesFilterChipTax ?? 'Tax Services';
+    case 'servicesFilterChipCertificate': return l10n.servicesFilterChipCertificate ?? 'Certificate Services';
+    case 'servicesFilterChipApplication': return l10n.servicesFilterChipApplication ?? 'Application Services';
+    case 'servicesFilterChipOther': return l10n.servicesFilterChipOther ?? 'Other Services';
     default: return categoryKey; // Fallback
   }
 }
 
-// Helper function to get the English category name from the key
+// Helper function to get the English category name from the key for filtering
 String _getEnglishCategoryNameFromKey(String categoryKey) {
   switch (categoryKey) {
-    // Map keys back to the English names used in the mock data model
-    case 'servicesFilterChipGrievance': return 'Grievance';
-    case 'servicesFilterChipCertificates': return 'Certificates';
-    case 'servicesFilterChipEmergency': return 'Emergency Services';
-    case 'servicesFilterChipBills': return 'Bills';
-    case 'servicesFilterChipTaxes': return 'Taxes';
-    case 'servicesFilterChipLicenses': return 'Licenses';
-    case 'servicesFilterChipInfo': return 'Info';
-    default: return ''; // Should not happen for valid keys other than 'All'
+    // Map keys back to the English category names used in the ServiceItem model
+    case 'servicesFilterChipTax': return catTax;
+    case 'servicesFilterChipCertificate': return catCertificate;
+    case 'servicesFilterChipApplication': return catApplication;
+    case 'servicesFilterChipOther': return catOther;
+    default: return ''; // For 'All' or invalid keys
   }
 }
 
@@ -80,14 +97,14 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
   // Filter the services based on the selected category
   List<ServiceItem> get _filteredServiceItems {
     if (_selectedCategoryKey == 'servicesFilterChipAll') {
-      return mockServiceItems; // Return all if 'All' is selected
+      return serviceItems; // Use the new serviceItems list
     }
 
     // Get the English category name corresponding to the selected key
     final englishCategoryToFilter = _getEnglishCategoryNameFromKey(_selectedCategoryKey);
 
     // Filter based on the English category name stored in the ServiceItem model
-    return mockServiceItems
+    return serviceItems // Use the new serviceItems list
         .where((item) => item.category == englishCategoryToFilter)
         .toList();
   }
@@ -107,10 +124,12 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              // Use category keys for mapping
+              // Use updated category keys for mapping
               children: filterCategoryKeys.map((categoryKey) {
                 final isSelected = categoryKey == _selectedCategoryKey;
+                // Get localized label with fallback
                 final localizedLabel = _getLocalizedCategoryName(context, categoryKey);
+
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: FilterChip(
@@ -146,9 +165,13 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                l10n.servicesHeader, // Use localized header
+                // Use selected category name as header, or "All Services" if 'All' is selected
+                _selectedCategoryKey == 'servicesFilterChipAll'
+                    ? l10n.servicesHeader // "All Services"
+                    : _getLocalizedCategoryName(context, _selectedCategoryKey),
                 style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               ),
+              // Keep the filter/sort icon for potential future use, but it's not functional now
               IconButton(
                 icon: const Icon(Icons.filter_list, color: jmcUnselectedColor),
                 tooltip: l10n.servicesFilterSortTooltip, // Use localized tooltip

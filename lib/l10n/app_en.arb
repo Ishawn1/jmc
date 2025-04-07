@@ -23,6 +23,10 @@
   "servicesFilterChipTaxes": "Taxes",
   "servicesFilterChipLicenses": "Licenses",
   "servicesFilterChipInfo": "Info",
+  "servicesFilterChipTax": "Tax Services",
+  "servicesFilterChipCertificate": "Certificate Services",
+  "servicesFilterChipApplication": "Application Services",
+  "servicesFilterChipOther": "Other Services",
   "servicesHeader": "All Services",
   "servicesFilterSortTooltip": "Filter/Sort",
   "servicesFilterSortSnackbar": "Filter/Sort Tapped (Not Implemented)",
@@ -46,5 +50,8 @@
   "serviceNameContactUs": "Contact Us",
   "serviceNamePublicGrievance": "Public Grievance",
   "serviceNameFireDepartment": "Fire Department",
-  "serviceNameAmbulance": "Ambulance"
+  "serviceNameAmbulance": "Ambulance",
+
+  "downloadsSearchHint": "Search downloads...",
+  "downloadsNoResults": "No downloads found matching your criteria."
 }
