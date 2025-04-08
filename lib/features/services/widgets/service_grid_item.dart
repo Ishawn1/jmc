@@ -18,6 +18,26 @@ String _getLocalizedServiceName(BuildContext context, String serviceId) {
     case 'public_grievance': return l10n.serviceNamePublicGrievance;
     case 'fire_dept': return l10n.serviceNameFireDepartment;
     case 'ambulance': return l10n.serviceNameAmbulance;
+    // Add cases for the new keys
+    case 'serviceNamePropTaxWaterPay': return l10n.serviceNamePropTaxWaterPay;
+    case 'serviceNameProfTaxPayCert': return l10n.serviceNameProfTaxPayCert;
+    case 'serviceNamePropTaxApp': return l10n.serviceNamePropTaxApp;
+    case 'serviceNameMarriageCert': return l10n.serviceNameMarriageCert;
+    case 'serviceNameFoodCert': return l10n.serviceNameFoodCert;
+    case 'serviceNameShopEstCert': return l10n.serviceNameShopEstCert;
+    case 'serviceNameFactoryLicenseCert': return l10n.serviceNameFactoryLicenseCert;
+    case 'serviceNameProfTaxCert': return l10n.serviceNameProfTaxCert;
+    case 'serviceNameAppOnline': return l10n.serviceNameAppOnline;
+    case 'serviceNameAppCheckStatus': return l10n.serviceNameAppCheckStatus;
+    case 'serviceNameAppDevPermission': return l10n.serviceNameAppDevPermission;
+    case 'serviceNameAppFactoryLicense': return l10n.serviceNameAppFactoryLicense;
+    case 'serviceNameOtherDevCollectPay': return l10n.serviceNameOtherDevCollectPay;
+    case 'serviceNameOtherWaterMeterPay': return l10n.serviceNameOtherWaterMeterPay;
+    case 'serviceNameOtherHospitalUser': return l10n.serviceNameOtherHospitalUser;
+    case 'serviceNameOtherArchEngLogin': return l10n.serviceNameOtherArchEngLogin;
+    case 'serviceNameOtherTownPlanning': return l10n.serviceNameOtherTownPlanning;
+    case 'serviceNameOtherVendorReg': return l10n.serviceNameOtherVendorReg;
+    case 'serviceNameOtherVehicleDealer': return l10n.serviceNameOtherVehicleDealer;
     default: return serviceId; // Fallback to ID if no match
   }
 }

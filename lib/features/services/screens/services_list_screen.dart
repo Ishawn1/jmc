@@ -14,34 +14,34 @@ const String catOther = 'Other Services/Information';
 
 final List<ServiceItem> serviceItems = [
   // Tax Services
-  const ServiceItem(id: 'tax_prop_water_pay', name: 'Property Tax / Water Charges (Online Payment)', icon: Icons.receipt_long, category: catTax),
-  const ServiceItem(id: 'tax_prof_pay_cert', name: 'Professional Tax (Online Payment & Certificate)', icon: Icons.work_history, category: catTax), // Changed icon
-  const ServiceItem(id: 'tax_prop_app', name: 'Property Tax Application (Application)', icon: Icons.description, category: catTax),
+  const ServiceItem(id: 'serviceNamePropTaxWaterPay', name: 'Property Tax / Water Charges (Online Payment)', icon: Icons.receipt_long, category: catTax), // ID Updated
+  const ServiceItem(id: 'serviceNameProfTaxPayCert', name: 'Professional Tax (Online Payment & Certificate)', icon: Icons.work_history, category: catTax), // ID Updated, Changed icon
+  const ServiceItem(id: 'serviceNamePropTaxApp', name: 'Property Tax Application (Application)', icon: Icons.description, category: catTax), // ID Updated
 
   // Certificate Services
-  const ServiceItem(id: 'cert_birth', name: 'Birth Certificate', icon: Icons.cake, category: catCertificate),
-  const ServiceItem(id: 'cert_death', name: 'Death Certificate', icon: Icons.book_online, category: catCertificate), // Changed icon
-  const ServiceItem(id: 'cert_marriage', name: 'Marriage Certificate', icon: Icons.family_restroom, category: catCertificate),
-  const ServiceItem(id: 'cert_food', name: 'Food Certificate', icon: Icons.restaurant, category: catCertificate),
-  const ServiceItem(id: 'cert_shop_est', name: 'Shop & Establishment Certificate', icon: Icons.store, category: catCertificate),
-  const ServiceItem(id: 'cert_factory_license', name: 'Factory License Certificate', icon: Icons.factory, category: catCertificate),
-  const ServiceItem(id: 'cert_prof_tax', name: 'Professional Tax Certificate', icon: Icons.badge, category: catCertificate), // Changed icon
+  const ServiceItem(id: 'birth_cert', name: 'Birth Certificate', icon: Icons.cake, category: catCertificate), // ID Updated
+  const ServiceItem(id: 'death_cert', name: 'Death Certificate', icon: Icons.book_online, category: catCertificate), // ID Updated, Changed icon
+  const ServiceItem(id: 'serviceNameMarriageCert', name: 'Marriage Certificate', icon: Icons.family_restroom, category: catCertificate), // ID Updated
+  const ServiceItem(id: 'serviceNameFoodCert', name: 'Food Certificate', icon: Icons.restaurant, category: catCertificate), // ID Updated
+  const ServiceItem(id: 'serviceNameShopEstCert', name: 'Shop & Establishment Certificate', icon: Icons.store, category: catCertificate), // ID Updated
+  const ServiceItem(id: 'serviceNameFactoryLicenseCert', name: 'Factory License Certificate', icon: Icons.factory, category: catCertificate), // ID Updated
+  const ServiceItem(id: 'serviceNameProfTaxCert', name: 'Professional Tax Certificate', icon: Icons.badge, category: catCertificate), // ID Updated, Changed icon
 
   // Application Services
-  const ServiceItem(id: 'app_online', name: 'Online Application', icon: Icons.web, category: catApplication),
-  const ServiceItem(id: 'app_check_status', name: 'Check Application Status', icon: Icons.search_sharp, category: catApplication), // Changed icon
-  const ServiceItem(id: 'app_dev_permission', name: 'Development Permission Application', icon: Icons.construction, category: catApplication), // Changed icon
-  const ServiceItem(id: 'app_factory_license', name: 'Factory License Application', icon: Icons.factory, category: catApplication),
+  const ServiceItem(id: 'serviceNameAppOnline', name: 'Online Application', icon: Icons.web, category: catApplication), // ID Updated
+  const ServiceItem(id: 'serviceNameAppCheckStatus', name: 'Check Application Status', icon: Icons.search_sharp, category: catApplication), // ID Updated, Changed icon
+  const ServiceItem(id: 'serviceNameAppDevPermission', name: 'Development Permission Application', icon: Icons.construction, category: catApplication), // ID Updated, Changed icon
+  const ServiceItem(id: 'serviceNameAppFactoryLicense', name: 'Factory License Application', icon: Icons.factory, category: catApplication), // ID Updated
 
   // Other Services/Information
-  const ServiceItem(id: 'other_dev_collect_pay', name: 'Development Collection Charges (Online Payment)', icon: Icons.payment, category: catOther),
-  const ServiceItem(id: 'other_water_meter_pay', name: 'Water Meter Charges (Online Payment)', icon: Icons.water_damage, category: catOther), // Changed icon
-  const ServiceItem(id: 'other_complaints', name: 'Complaints (Others)', icon: Icons.report_problem, category: catOther),
-  const ServiceItem(id: 'other_hospital_user', name: 'Hospital User (Others)', icon: Icons.local_hospital, category: catOther),
-  const ServiceItem(id: 'other_arch_eng_login', name: 'Architecture/Engineer Login (Others)', icon: Icons.engineering, category: catOther),
-  const ServiceItem(id: 'other_town_planning', name: 'For Town Planning (Others)', icon: Icons.map, category: catOther),
-  const ServiceItem(id: 'other_vendor_reg', name: 'Vendor Registration (Others)', icon: Icons.person_add, category: catOther),
-  const ServiceItem(id: 'other_vehicle_dealer', name: 'Vehicle Dealer (Others)', icon: Icons.directions_car, category: catOther),
+  const ServiceItem(id: 'serviceNameOtherDevCollectPay', name: 'Development Collection Charges (Online Payment)', icon: Icons.payment, category: catOther), // ID Updated
+  const ServiceItem(id: 'serviceNameOtherWaterMeterPay', name: 'Water Meter Charges (Online Payment)', icon: Icons.water_damage, category: catOther), // ID Updated, Changed icon
+  const ServiceItem(id: 'complaint', name: 'Complaints (Others)', icon: Icons.report_problem, category: catOther), // ID Updated (maps to File Complaint)
+  const ServiceItem(id: 'serviceNameOtherHospitalUser', name: 'Hospital User (Others)', icon: Icons.local_hospital, category: catOther), // ID Updated
+  const ServiceItem(id: 'serviceNameOtherArchEngLogin', name: 'Architecture/Engineer Login (Others)', icon: Icons.engineering, category: catOther), // ID Updated
+  const ServiceItem(id: 'serviceNameOtherTownPlanning', name: 'For Town Planning (Others)', icon: Icons.map, category: catOther), // ID Updated
+  const ServiceItem(id: 'serviceNameOtherVendorReg', name: 'Vendor Registration (Others)', icon: Icons.person_add, category: catOther), // ID Updated
+  const ServiceItem(id: 'serviceNameOtherVehicleDealer', name: 'Vehicle Dealer (Others)', icon: Icons.directions_car, category: catOther), // ID Updated
 ];
 
 // Filter category keys based on the new categories

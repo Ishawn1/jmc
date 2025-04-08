@@ -52,6 +52,26 @@
   "serviceNameFireDepartment": "Fire Department",
   "serviceNameAmbulance": "Ambulance",
 
+  "serviceNamePropTaxWaterPay": "Property Tax / Water Charges (Online Payment)",
+  "serviceNameProfTaxPayCert": "Professional Tax (Online Payment & Certificate)",
+  "serviceNamePropTaxApp": "Property Tax Application (Application)",
+  "serviceNameMarriageCert": "Marriage Certificate",
+  "serviceNameFoodCert": "Food Certificate",
+  "serviceNameShopEstCert": "Shop & Establishment Certificate",
+  "serviceNameFactoryLicenseCert": "Factory License Certificate",
+  "serviceNameProfTaxCert": "Professional Tax Certificate",
+  "serviceNameAppOnline": "Online Application",
+  "serviceNameAppCheckStatus": "Check Application Status",
+  "serviceNameAppDevPermission": "Development Permission Application",
+  "serviceNameAppFactoryLicense": "Factory License Application",
+  "serviceNameOtherDevCollectPay": "Development Collection Charges (Online Payment)",
+  "serviceNameOtherWaterMeterPay": "Water Meter Charges (Online Payment)",
+  "serviceNameOtherHospitalUser": "Hospital User (Others)",
+  "serviceNameOtherArchEngLogin": "Architecture/Engineer Login (Others)",
+  "serviceNameOtherTownPlanning": "For Town Planning (Others)",
+  "serviceNameOtherVendorReg": "Vendor Registration (Others)",
+  "serviceNameOtherVehicleDealer": "Vehicle Dealer (Others)",
+
   "downloadsSearchHint": "Search downloads...",
   "downloadsNoResults": "No downloads found matching your criteria."
 }

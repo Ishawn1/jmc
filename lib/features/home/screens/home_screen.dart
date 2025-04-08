@@ -67,6 +67,57 @@ class _HomeScreenState extends State<HomeScreen> {
         //   ),
         // ],
       ),
+      // Add the Drawer here
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                // Optional: Add background color or image
+                // color: Theme.of(context).colorScheme.primary,
+              ),
+              // Optional: Add logo or user info here later
+              child: Text('JMC App Menu'), // Placeholder title
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                // Placeholder: Close the drawer and maybe show a message
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Settings Tapped (Not Implemented)')),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
+              onTap: () {
+                // Placeholder
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Profile Tapped (Not Implemented)')),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('About'),
+              onTap: () {
+                // Placeholder
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('About Tapped (Not Implemented)')),
+                );
+              },
+            ),
+            // Add more items here if needed
+          ],
+        ),
+      ),
       body: Center(
         // Display the widget corresponding to the selected index
         child: _widgetOptions.elementAt(_selectedIndex),
