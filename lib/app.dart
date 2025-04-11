@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart'; // Import localization delegates
+import 'package:provider/provider.dart'; // Import provider
 import 'features/auth/screens/login_screen.dart'; // Import the initial screen
 import 'constants/app_constants.dart'; // For app title
 import 'constants/colors.dart'; // For theme colors
+import 'providers/locale_provider.dart'; // Import LocaleProvider
 // Import the generated localizations delegate
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,10 +14,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: appTitle, // This title is not localized by default, but often set in native config
-      // Localization settings
-      localizationsDelegates: const [
+    // Wrap with ChangeNotifierProvider
+    return ChangeNotifierProvider(
+      create: (_) => LocaleProvider(),
+      child: Consumer<LocaleProvider>( // Use Consumer to rebuild MaterialApp on locale change
+        builder: (context, localeProvider, child) {
+          return MaterialApp(
+            title: appTitle, // This title is not localized by default, but often set in native config
+            // Localization settings
+            locale: localeProvider.locale, // Set locale from provider
+      localizationsDelegates: [ // Removed 'const'
         AppLocalizations.delegate, // Add the generated delegate
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -26,7 +34,7 @@ class App extends StatelessWidget {
         Locale('gu'), // Gujarati
         Locale('hi'), // Hindi
       ],
-      // locale: Locale('gu'), // Optional: Force a specific locale for testing
+      // locale: localeProvider.locale, // Set locale from provider - ALREADY DONE ABOVE
       theme: ThemeData(
         useMaterial3: true,
         // Define the color scheme using the primary accent color
@@ -68,6 +76,9 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // Set the initial screen of the app to the LoginScreen
       home: const LoginScreen(),
+          );
+        },
+      ),
     );
   }
 }

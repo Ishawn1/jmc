@@ -61,12 +61,12 @@ String _getLocalizedCategoryName(BuildContext context, String categoryKey) {
   // Map keys to localization strings (ensure these exist in your .arb files)
   switch (categoryKey) {
     case 'servicesFilterChipAll': return l10n.servicesFilterChipAll;
-    // TODO: Add these keys to app_en.arb and other localization files
-    case 'servicesFilterChipTax': return l10n.servicesFilterChipTax ?? 'Tax Services';
-    case 'servicesFilterChipCertificate': return l10n.servicesFilterChipCertificate ?? 'Certificate Services';
-    case 'servicesFilterChipApplication': return l10n.servicesFilterChipApplication ?? 'Application Services';
-    case 'servicesFilterChipOther': return l10n.servicesFilterChipOther ?? 'Other Services';
-    default: return categoryKey; // Fallback
+    // Keys should exist now after adding them and running gen-l10n
+    case 'servicesFilterChipTax': return l10n.servicesFilterChipTax;
+    case 'servicesFilterChipCertificate': return l10n.servicesFilterChipCertificate;
+    case 'servicesFilterChipApplication': return l10n.servicesFilterChipApplication;
+    case 'servicesFilterChipOther': return l10n.servicesFilterChipOther;
+    default: return categoryKey; // Fallback for unknown keys
   }
 }
 

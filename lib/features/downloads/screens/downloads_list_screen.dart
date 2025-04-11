@@ -169,6 +169,33 @@ final List<String> downloadFilterCategories = [
   ...allDownloadItems.map((item) => item.category).toSet().toList()
 ];
 
+// Helper function to get localized category name from the English category string
+String _getLocalizedDownloadCategoryName(BuildContext context, String englishCategoryName) {
+  final l10n = AppLocalizations.of(context)!;
+  switch (englishCategoryName) {
+    case 'All': return l10n.downloadCategoryAll;
+    case 'Accounts & Audit': return l10n.downloadCategoryAccountsAudit;
+    case 'Birth & Death Registration': return l10n.downloadCategoryBirthDeathReg;
+    case 'Estate': return l10n.downloadCategoryEstate;
+    case 'Fire Safety': return l10n.downloadCategoryFireSafety;
+    case 'Food Registration & Licensing': return l10n.downloadCategoryFoodRegLic;
+    case 'General Administration': return l10n.downloadCategoryGenAdmin;
+    case 'Health': return l10n.downloadCategoryHealth;
+    case 'House Tax & Water Tax': return l10n.downloadCategoryHouseWaterTax;
+    case 'ICDS': return l10n.downloadCategoryICDS;
+    case 'Legal Branch': return l10n.downloadCategoryLegal;
+    case 'Marriage Registration': return l10n.downloadCategoryMarriageReg;
+    case 'Professional Tax': return l10n.downloadCategoryProfTax;
+    case 'Shop & Establishment': return l10n.downloadCategoryShopEst;
+    case 'Solid Waste Management': return l10n.downloadCategorySolidWaste;
+    case 'T.P.D.P.': return l10n.downloadCategoryTPDP;
+    case 'Town Planning': return l10n.downloadCategoryTownPlanning;
+    case 'UCD': return l10n.downloadCategoryUCD;
+    case 'Water Works': return l10n.downloadCategoryWaterWorks;
+    default: return englishCategoryName; // Fallback
+  }
+}
+
 /// Displays a list of downloadable documents or forms with filtering.
 class DownloadsListScreen extends StatefulWidget {
   const DownloadsListScreen({super.key});
@@ -246,7 +273,7 @@ class _DownloadsListScreenState extends State<DownloadsListScreen> {
           child: TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: l10n.downloadsSearchHint ?? 'Search downloads...', // TODO: Add localization
+              hintText: l10n.downloadsSearchHint, // Use localized hint
               prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
@@ -273,19 +300,19 @@ class _DownloadsListScreenState extends State<DownloadsListScreen> {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: downloadFilterCategories.map((category) {
-                final isSelected = category == _selectedCategory;
-                // TODO: Add localization for category names if needed
-                final label = category; // Use category name directly for now
+              children: downloadFilterCategories.map((englishCategory) {
+                final isSelected = englishCategory == _selectedCategory;
+                // Get localized label
+                final localizedLabel = _getLocalizedDownloadCategoryName(context, englishCategory);
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: FilterChip(
-                    label: Text(label),
+                    label: Text(localizedLabel), // Use localized label
                     selected: isSelected,
                     onSelected: (selected) {
                       if (selected) {
                         setState(() {
-                          _selectedCategory = category;
+                          _selectedCategory = englishCategory; // Fix: Use correct variable name
                         });
                       }
                     },
@@ -308,7 +335,7 @@ class _DownloadsListScreenState extends State<DownloadsListScreen> {
         Expanded(
           child: filteredItems.isEmpty
               ? EmptyPlaceholder(
-                  message: l10n.downloadsNoResults ?? 'No downloads found matching your criteria.', // TODO: Add localization
+                  message: l10n.downloadsNoResults, // Use localized message
                 )
               : ListView.builder(
                   padding: const EdgeInsets.only(top: 8.0), // Add padding above list

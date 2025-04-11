@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // Import provider
+import '../../../providers/locale_provider.dart'; // Import LocaleProvider
 import '../../services/screens/services_list_screen.dart';
 import '../../updates/screens/updates_list_screen.dart';
 import '../../maps/screens/maps_screen.dart';
@@ -48,14 +50,46 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!; // Get localizations object
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: false); // Get provider instance
+
+    // Map language codes to display names
+    const languageMap = {
+      'en': 'English',
+      'gu': 'ગુજરાતી',
+      'hi': 'हिन्दी',
+    };
 
     return Scaffold(
       appBar: AppBar(
         // Use localized title based on selected index
         title: Text(_getLocalizedTitle(context, _selectedIndex)),
-        // Optionally add actions like logout or profile here
-        // actions: [
-        //   IconButton(
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (String localeCode) {
+              localeProvider.setLocale(Locale(localeCode));
+            },
+            itemBuilder: (BuildContext context) {
+              return AppLocalizations.supportedLocales.map((Locale locale) {
+                return PopupMenuItem<String>(
+                  value: locale.languageCode,
+                  child: Text(languageMap[locale.languageCode] ?? locale.languageCode),
+                );
+              }).toList();
+            },
+            // Display current language code or a generic icon
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                Provider.of<LocaleProvider>(context).locale.languageCode.toUpperCase(),
+                style: TextStyle(
+                  color: Theme.of(context).appBarTheme.foregroundColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          // Optional: Keep other actions if needed
+          // IconButton(
         //     icon: const Icon(Icons.logout),
         //     onPressed: () {
         //       // Implement logout: Navigate back to LoginScreen
@@ -65,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
         //       );
         //     },
         //   ),
-        // ],
+        ], // Added missing closing bracket for actions list
       ),
       // Add the Drawer here
       drawer: Drawer(
@@ -73,17 +107,17 @@ class _HomeScreenState extends State<HomeScreen> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader( // Removed 'const'
+              decoration: const BoxDecoration( // Keep inner const if possible
                 // Optional: Add background color or image
                 // color: Theme.of(context).colorScheme.primary,
               ),
               // Optional: Add logo or user info here later
-              child: Text('JMC App Menu'), // Placeholder title
+              child: Text(l10n.drawerMenuTitle), // Use localized title
             ),
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
+              title: Text(l10n.drawerSettings), // Use localized title
               onTap: () {
                 // Placeholder: Close the drawer and maybe show a message
                 Navigator.pop(context);
@@ -94,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text('Profile'),
+              title: Text(l10n.drawerProfile), // Use localized title
               onTap: () {
                 // Placeholder
                 Navigator.pop(context);
@@ -105,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.info_outline),
-              title: const Text('About'),
+              title: Text(l10n.drawerAbout), // Use localized title
               onTap: () {
                 // Placeholder
                 Navigator.pop(context);

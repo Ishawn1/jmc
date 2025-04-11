@@ -73,5 +73,36 @@
   "serviceNameOtherVehicleDealer": "Vehicle Dealer (Others)",
 
   "downloadsSearchHint": "Search downloads...",
-  "downloadsNoResults": "No downloads found matching your criteria."
+  "downloadsNoResults": "No downloads found matching your criteria.",
+
+  "drawerMenuTitle": "JMC App Menu",
+  "drawerSettings": "Settings",
+  "drawerProfile": "Profile",
+  "drawerAbout": "About",
+
+  "serviceDetailNameLabel": "Service Name:",
+  "serviceDetailIdLabel": "Service ID:",
+  "serviceDetailPlaceholder": "(Further details or actions for this service will go here)",
+
+  "downloadCategoryAll": "All",
+  "downloadCategoryAccountsAudit": "Accounts & Audit",
+  "downloadCategoryBirthDeathReg": "Birth & Death Registration",
+  "downloadCategoryEstate": "Estate",
+  "downloadCategoryFireSafety": "Fire Safety",
+  "downloadCategoryFoodRegLic": "Food Registration & Licensing",
+  "downloadCategoryGenAdmin": "General Administration",
+  "downloadCategoryHealth": "Health",
+  "downloadCategoryHouseWaterTax": "House Tax & Water Tax",
+  "downloadCategoryICDS": "ICDS",
+  "downloadCategoryLegal": "Legal Branch",
+  "downloadCategoryMarriageReg": "Marriage Registration",
+  "downloadCategoryProfTax": "Professional Tax",
+  "downloadCategoryShopEst": "Shop & Establishment",
+  "downloadCategorySolidWaste": "Solid Waste Management",
+  "downloadCategoryTPDP": "T.P.D.P.",
+  "downloadCategoryTownPlanning": "Town Planning",
+  "downloadCategoryUCD": "UCD",
+  "downloadCategoryWaterWorks": "Water Works",
+
+  "mapScreenPlaceholder": "Map View Placeholder\n(Integration pending)"
 }

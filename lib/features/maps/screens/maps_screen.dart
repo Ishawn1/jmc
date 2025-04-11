@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generated localizations
 import '../../../widgets/empty_placeholder.dart'; // Use the reusable placeholder
 
 /// Placeholder screen for map-related features.
@@ -10,9 +11,11 @@ class MapsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Using the reusable placeholder widget
-    return const EmptyPlaceholder(
-      message: 'Map View Placeholder\n(Integration pending)',
+    final l10n = AppLocalizations.of(context)!; // Get localizations
+
+    // Using the reusable placeholder widget with localized message
+    return EmptyPlaceholder(
+      message: l10n.mapScreenPlaceholder, // Use localized placeholder text
     );
   }
 }
