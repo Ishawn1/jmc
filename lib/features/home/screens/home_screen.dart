@@ -6,6 +6,9 @@ import '../../updates/screens/updates_list_screen.dart';
 import '../../maps/screens/maps_screen.dart';
 import '../../downloads/screens/downloads_list_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generated localizations
+// Import the new screens for navigation
+import '../../settings/screens/settings_screen.dart';
+import '../../profile/screens/profile_screen.dart';
 // import '../../../constants/app_constants.dart'; // appTitle is not used here anymore
 
 /// The main screen after login, containing the bottom navigation bar.
@@ -107,22 +110,29 @@ class _HomeScreenState extends State<HomeScreen> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader( // Removed 'const'
-              decoration: const BoxDecoration( // Keep inner const if possible
-                // Optional: Add background color or image
-                // color: Theme.of(context).colorScheme.primary,
+            DrawerHeader(
+              decoration: BoxDecoration(
+                // Add background color from the theme to make the space look intentional
+                color: Theme.of(context).colorScheme.surfaceContainerHighest,
               ),
               // Optional: Add logo or user info here later
-              child: Text(l10n.drawerMenuTitle), // Use localized title
+              child: Text(
+                l10n.drawerMenuTitle, // Use localized title
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface, // Ensure text is visible
+                  fontSize: 24, // Example style adjustment
+                ),
+              ),
             ),
             ListTile(
               leading: const Icon(Icons.settings),
               title: Text(l10n.drawerSettings), // Use localized title
               onTap: () {
-                // Placeholder: Close the drawer and maybe show a message
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Settings Tapped (Not Implemented)')),
+                // Navigate to Settings Screen
+                Navigator.pop(context); // Close drawer first
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
                 );
               },
             ),
@@ -130,10 +140,11 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: const Icon(Icons.person),
               title: Text(l10n.drawerProfile), // Use localized title
               onTap: () {
-                // Placeholder
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Profile Tapped (Not Implemented)')),
+                // Navigate to Profile Screen
+                Navigator.pop(context); // Close drawer first
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfileScreen()),
                 );
               },
             ),

@@ -166,7 +166,7 @@ final List<DownloadItem> allDownloadItems = [
 // Extract unique categories for filter chips
 final List<String> downloadFilterCategories = [
   'All', // Add 'All' category
-  ...allDownloadItems.map((item) => item.category).toSet().toList()
+  ...allDownloadItems.map((item) => item.category).toSet() // Removed unnecessary .toList()
 ];
 
 // Helper function to get localized category name from the English category string
@@ -280,7 +280,8 @@ class _DownloadsListScreenState extends State<DownloadsListScreen> {
                 borderSide: BorderSide.none,
               ),
               filled: true,
-              fillColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+              // Replace deprecated surfaceVariant and withOpacity
+              fillColor: Theme.of(context).colorScheme.surfaceContainerHighest.withAlpha((255 * 0.5).round()),
               contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
               suffixIcon: _searchQuery.isNotEmpty
                   ? IconButton(
@@ -316,13 +317,18 @@ class _DownloadsListScreenState extends State<DownloadsListScreen> {
                         });
                       }
                     },
-                    selectedColor: jmcPrimaryAccent.withOpacity(0.12),
-                    checkmarkColor: jmcPrimaryAccent,
-                    labelStyle: TextStyle(
-                      color: isSelected ? jmcPrimaryAccent : jmcSecondaryTextColor,
+                    // Replace deprecated withOpacity
+                    // Use theme colors for chip styling
+                    selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                    checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                     labelStyle: TextStyle(
+                      // Use theme colors for text based on selection
+                      color: isSelected
+                          ? Theme.of(context).colorScheme.onPrimaryContainer // Color for selected chip text
+                          : Theme.of(context).colorScheme.onSurfaceVariant, // Color for unselected chip text
                     ),
-                    side: isSelected
-                        ? BorderSide.none
+                   side: isSelected
+                        ? BorderSide.none // No border when selected (uses background)
                         : BorderSide(color: Colors.grey.shade400),
                   ),
                 );

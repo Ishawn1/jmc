@@ -80,6 +80,16 @@
   "drawerProfile": "પ્રોફાઇલ",
   "drawerAbout": "વિશે",
 
+  "settingsScreenTitle": "સેટિંગ્સ",
+  "profileScreenTitle": "પ્રોફાઇલ",
+  "settingsThemeTitle": "દેખાવ",
+  "settingsThemeModeTitle": "થીમ મોડ",
+  "settingsThemeLight": "લાઇટ",
+  "settingsThemeDark": "ડાર્ક",
+  "settingsThemeSystem": "સિસ્ટમ ડિફોલ્ટ",
+  "settingsDynamicColorTitle": "ઉપકરણ થીમ રંગોનો ઉપયોગ કરો",
+  "settingsDynamicColorDescription": "તમારા વોલપેપરના આધારે રંગોને અનુકૂલિત કરે છે (Android 12+)",
+
   "serviceDetailNameLabel": "સેવાનું નામ:",
   "serviceDetailIdLabel": "સેવા ID:",
   "serviceDetailPlaceholder": "(આ સેવા માટે વધુ વિગતો અથવા ક્રિયાઓ અહીં આવશે)",

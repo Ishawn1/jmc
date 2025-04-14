@@ -80,6 +80,16 @@
   "drawerProfile": "प्रोफ़ाइल",
   "drawerAbout": "बारे में",
 
+  "settingsScreenTitle": "सेटिंग्स",
+  "profileScreenTitle": "प्रोफ़ाइल",
+  "settingsThemeTitle": "दिखावट",
+  "settingsThemeModeTitle": "थीम मोड",
+  "settingsThemeLight": "लाइट",
+  "settingsThemeDark": "डार्क",
+  "settingsThemeSystem": "सिस्टम डिफ़ॉल्ट",
+  "settingsDynamicColorTitle": "डिवाइस थीम रंगों का उपयोग करें",
+  "settingsDynamicColorDescription": "आपके वॉलपेपर के आधार पर रंगों को अनुकूलित करता है (एंड्रॉइड 12+)",
+
   "serviceDetailNameLabel": "सेवा का नाम:",
   "serviceDetailIdLabel": "सेवा आईडी:",
   "serviceDetailPlaceholder": "(इस सेवा के लिए अधिक विवरण या कार्य यहाँ दिए जाएंगे)",

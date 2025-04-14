@@ -113,7 +113,7 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!; // Get localizations object
     final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
+    // final colorScheme = Theme.of(context).colorScheme; // Removed unused variable
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,13 +143,18 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
                       }
                     },
                     // Basic MD3 styling
-                    selectedColor: jmcPrimaryAccent.withOpacity(0.12),
-                    checkmarkColor: jmcPrimaryAccent,
+                    // Replace withOpacity with withAlpha for better precision
+                    // Use theme colors for chip styling
+                    selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                    checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
                     labelStyle: TextStyle(
-                      color: isSelected ? jmcPrimaryAccent : jmcSecondaryTextColor,
+                      // Use theme colors for text based on selection
+                      color: isSelected
+                          ? Theme.of(context).colorScheme.onPrimaryContainer // Color for selected chip text
+                          : Theme.of(context).colorScheme.onSurfaceVariant, // Color for unselected chip text
                     ),
                     side: isSelected
-                        ? BorderSide.none
+                        ? BorderSide.none // No border when selected (uses background)
                         : BorderSide(color: Colors.grey.shade400),
                   ),
                 );

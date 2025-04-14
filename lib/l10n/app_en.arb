@@ -80,6 +80,16 @@
   "drawerProfile": "Profile",
   "drawerAbout": "About",
 
+  "settingsScreenTitle": "Settings",
+  "profileScreenTitle": "Profile",
+  "settingsThemeTitle": "Appearance",
+  "settingsThemeModeTitle": "Theme Mode",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsThemeSystem": "System Default",
+  "settingsDynamicColorTitle": "Use device theme colors",
+  "settingsDynamicColorDescription": "Adapts colors based on your wallpaper (Android 12+)",
+
   "serviceDetailNameLabel": "Service Name:",
   "serviceDetailIdLabel": "Service ID:",
   "serviceDetailPlaceholder": "(Further details or actions for this service will go here)",
