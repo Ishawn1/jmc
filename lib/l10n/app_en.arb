@@ -114,5 +114,129 @@
   "downloadCategoryUCD": "UCD",
   "downloadCategoryWaterWorks": "Water Works",
 
-  "mapScreenPlaceholder": "Map View Placeholder\n(Integration pending)"
+  "mapScreenPlaceholder": "Map View Placeholder\n(Integration pending)",
+
+  "@drawerAbout": {
+    "description": "Text for the 'About' option in the drawer menu"
+  },
+
+  "offlineDownloadsTitle": "Offline Downloads",
+  "@offlineDownloadsTitle": {
+    "description": "Title for the offline downloads screen"
+  },
+  "offlineDownloadsEmpty": "No offline downloads yet",
+  "@offlineDownloadsEmpty": {
+    "description": "Message shown when there are no offline downloads"
+  },
+  "downloadTooltip": "Download for offline use",
+  "@downloadTooltip": {
+    "description": "Tooltip for download button"
+  },
+  "cancelDownloadTooltip": "Cancel download",
+  "@cancelDownloadTooltip": {
+    "description": "Tooltip for cancel download button"
+  },
+  "retryDownloadTooltip": "Retry download",
+  "@retryDownloadTooltip": {
+    "description": "Tooltip for retry download button"
+  },
+  "moreOptionsTooltip": "More options",
+  "@moreOptionsTooltip": {
+    "description": "Tooltip for more options button"
+  },
+  "openFileActionText": "Open file",
+  "@openFileActionText": {
+    "description": "Text for open file action"
+  },
+  "exportFileActionText": "Export file",
+  "@exportFileActionText": {
+    "description": "Text for export file action"
+  },
+  "deleteFileActionText": "Delete from device",
+  "@deleteFileActionText": {
+    "description": "Text for delete file action"
+  },
+  "downloadedOn": "Downloaded on",
+  "@downloadedOn": {
+    "description": "Text indicating when a file was downloaded"
+  },
+  "downloadFailed": "Download failed",
+  "@downloadFailed": {
+    "description": "Message shown when download fails"
+  },
+  "downloadSuccessful": "Downloaded successfully",
+  "@downloadSuccessful": {
+    "description": "Message shown when download completes successfully"
+  },
+  "saveForOfflineUse": "Save for offline use",
+  "@saveForOfflineUse": {
+    "description": "Button text for saving a file for offline use"
+  },
+  "offlineTab": "Offline",
+  "@offlineTab": {
+    "description": "Tab title for offline downloads in downloads screen"
+  },
+  "allTab": "All",
+  "@allTab": {
+    "description": "Tab title for all downloads in downloads screen"
+  },
+  
+  "monthJan": "Jan",
+  "@monthJan": {
+    "description": "Abbreviated name for January"
+  },
+  "monthFeb": "Feb",
+  "@monthFeb": {
+    "description": "Abbreviated name for February"
+  },
+  "monthMar": "Mar",
+  "@monthMar": {
+    "description": "Abbreviated name for March"
+  },
+  "monthApr": "Apr",
+  "@monthApr": {
+    "description": "Abbreviated name for April"
+  },
+  "monthMay": "May",
+  "@monthMay": {
+    "description": "Abbreviated name for May"
+  },
+  "monthJun": "Jun",
+  "@monthJun": {
+    "description": "Abbreviated name for June"
+  },
+  "monthJul": "Jul",
+  "@monthJul": {
+    "description": "Abbreviated name for July"
+  },
+  "monthAug": "Aug",
+  "@monthAug": {
+    "description": "Abbreviated name for August"
+  },
+  "monthSep": "Sep",
+  "@monthSep": {
+    "description": "Abbreviated name for September"
+  },
+  "monthOct": "Oct",
+  "@monthOct": {
+    "description": "Abbreviated name for October"
+  },
+  "monthNov": "Nov",
+  "@monthNov": {
+    "description": "Abbreviated name for November"
+  },
+  "monthDec": "Dec",
+  "@monthDec": {
+    "description": "Abbreviated name for December"
+  },
+  
+  "downloadsSearchLabel": "Search downloads",
+  "@downloadsSearchLabel": {
+    "description": "Label for the downloads search field"
+  },
+  
+  "downloadsEmptyFilteredMessage": "No downloads match your search",
+  "@downloadsEmptyFilteredMessage": {
+    "description": "Message shown when no downloads match the search criteria"
+  }
 }

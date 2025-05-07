@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- For sharing and accessing files from the app's external storage -->
+    <external-path name="external_files" path="."/>
+    
+    <!-- For documents saved in app-specific directories -->
+    <external-files-path name="external_files" path="."/>
+    
+    <!-- For files in the app-specific cache directory -->
+    <cache-path name="cache" path="."/>
+    
+    <!-- For files in the app's files directory -->
+    <files-path name="files" path="."/>
+    
+    <!-- For app-specific files accessible by other apps -->
+    <external-cache-path name="external_cache" path="."/>
+    
+    <!-- For files in the app data directory -->
+    <root-path name="root" path="."/>
+</paths> 

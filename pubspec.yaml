@@ -2,7 +2,7 @@ name: jmc_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.2.0
+version: 1.3.0
 
 environment:
   sdk: ^3.6.0
@@ -39,6 +39,15 @@ dependencies:
   provider: ^6.0.0 # Added for state management (locale)
   shared_preferences: ^2.2.3 # Added for theme persistence
   dynamic_color: ^1.7.0 # Added for Material You dynamic colors
+  path_provider: ^2.1.2 # Added for accessing device file system
+  dio: ^5.4.0 # Added for downloading files
+  sqflite: ^2.3.2 # Added for database storage
+  permission_handler: ^11.2.0 # Added for handling permissions
+  flutter_file_dialog: ^3.0.2 # Added for file saving dialogs
+  share_plus: ^7.2.2 # Added for sharing files with other apps
+  open_file: ^3.3.2 # Added for directly opening files
+  app_settings: ^5.1.1 # Added for directly opening app settings
+  device_info_plus: ^10.0.0 # Added for reliably getting device info (Android SDK version)
 
   # Add the flutter_localizations package
   flutter_localizations:

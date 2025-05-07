@@ -6,13 +6,39 @@ import 'constants/app_constants.dart';
 import 'constants/colors.dart';
 import 'providers/locale_provider.dart';
 import 'providers/theme_provider.dart'; // Import ThemeProvider
+import 'providers/offline_downloads_provider.dart'; // Import OfflineDownloadsProvider
 import 'package:dynamic_color/dynamic_color.dart'; // Import dynamic_color
+import 'utils/permission_util.dart'; // Import permission utility
 // Import the generated localizations delegate
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'dart:io'; // No longer needed directly here
+// import 'package:permission_handler/permission_handler.dart'; // No longer needed directly here
 
 /// The root widget of the application.
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({super.key});
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  @override
+  void initState() {
+    super.initState();
+    _requestPermissionsOnStartup();
+  }
+
+  // Request necessary permissions on app startup using PermissionUtil
+  Future<void> _requestPermissionsOnStartup() async {
+    debugPrint('Requesting permissions on app startup via PermissionUtil...');
+    // We can call requestStoragePermission which now handles various Android versions
+    // We don't necessarily need to act on the boolean result here,
+    // as the main goal is to trigger the permission dialog if not granted.
+    await PermissionUtil.requestStoragePermission();
+    // Optionally, you could call checkAndRequestAllPermissions if you want the dialog logic from there
+    // await PermissionUtil.checkAndRequestAllPermissions(context); // This needs BuildContext
+  }
 
   // Updated helper function to build ThemeData
   // Accepts optional dynamic ColorScheme
@@ -66,7 +92,7 @@ class App extends StatelessWidget {
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         // Use scheme surface/background for Nav Bar
-         backgroundColor: colorScheme.brightness == Brightness.light
+        backgroundColor: colorScheme.brightness == Brightness.light
             ? jmcAppBarBackground // Keep custom light Nav background
             : colorScheme.surface, // Use scheme surface for dark Nav
         selectedItemColor: colorScheme.primary, // Use scheme primary
@@ -99,27 +125,26 @@ class App extends StatelessWidget {
       // Example: Ensure SwitchListTile colors adapt
       switchTheme: SwitchThemeData(
         thumbColor: MaterialStateProperty.resolveWith<Color?>((states) {
-           if (states.contains(MaterialState.selected)) {
-             return colorScheme.primary;
-           }
-           return null; // Use default thumb color
+          if (states.contains(MaterialState.selected)) {
+            return colorScheme.primary;
+          }
+          return null; // Use default thumb color
         }),
         trackColor: MaterialStateProperty.resolveWith<Color?>((states) {
-           if (states.contains(MaterialState.selected)) {
-             return colorScheme.primary.withOpacity(0.5);
-           }
-           return null; // Use default track color
+          if (states.contains(MaterialState.selected)) {
+            return colorScheme.primary.withOpacity(0.5);
+          }
+          return null; // Use default track color
         }),
-         trackOutlineColor: MaterialStateProperty.resolveWith((states) {
-           if (states.contains(MaterialState.selected)) {
-             return Colors.transparent; // No outline when selected
-           }
-           return colorScheme.outline; // Default outline
-         }),
+        trackOutlineColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.transparent; // No outline when selected
+          }
+          return colorScheme.outline; // Default outline
+        }),
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -127,41 +152,52 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
-        ChangeNotifierProvider(create: (_) => ThemeProvider()), // Add ThemeProvider
+        ChangeNotifierProvider(
+            create: (_) => ThemeProvider()), // Add ThemeProvider
+        ChangeNotifierProvider(
+            create: (_) =>
+                OfflineDownloadsProvider()), // Add OfflineDownloadsProvider
       ],
-      child: Consumer2<LocaleProvider, ThemeProvider>( // Use Consumer2
-        builder: (context, localeProvider, themeProvider, child) { // Add themeProvider
+      child: Consumer2<LocaleProvider, ThemeProvider>(
+        // Use Consumer2
+        builder: (context, localeProvider, themeProvider, child) {
+          // Add themeProvider
           // Wrap MaterialApp with DynamicColorBuilder
           return DynamicColorBuilder(
             builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
               // Determine which dynamic scheme to potentially use based on brightness
               // Only pass the dynamic scheme if useDynamicColor is true
-              ColorScheme? lightColorScheme = themeProvider.useDynamicColor ? lightDynamic : null;
-              ColorScheme? darkColorScheme = themeProvider.useDynamicColor ? darkDynamic : null;
+              ColorScheme? lightColorScheme =
+                  themeProvider.useDynamicColor ? lightDynamic : null;
+              ColorScheme? darkColorScheme =
+                  themeProvider.useDynamicColor ? darkDynamic : null;
 
               return MaterialApp(
                 title: appTitle,
                 // Localization settings
                 locale: localeProvider.locale,
-      localizationsDelegates: [ // Removed 'const'
-        AppLocalizations.delegate, // Add the generated delegate
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('gu'), // Gujarati
-        Locale('hi'), // Hindi
-      ],
-      // Theme settings using the updated helper and potentially dynamic schemes
-      themeMode: themeProvider.themeMode,
-      theme: _buildThemeData(Brightness.light, themeProvider.useDynamicColor, lightColorScheme),
-      darkTheme: _buildThemeData(Brightness.dark, themeProvider.useDynamicColor, darkColorScheme),
+                localizationsDelegates: [
+                  // Removed 'const'
+                  AppLocalizations.delegate, // Add the generated delegate
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: const [
+                  Locale('en'), // English
+                  Locale('gu'), // Gujarati
+                  Locale('hi'), // Hindi
+                ],
+                // Theme settings using the updated helper and potentially dynamic schemes
+                themeMode: themeProvider.themeMode,
+                theme: _buildThemeData(Brightness.light,
+                    themeProvider.useDynamicColor, lightColorScheme),
+                darkTheme: _buildThemeData(Brightness.dark,
+                    themeProvider.useDynamicColor, darkColorScheme),
 
-      debugShowCheckedModeBanner: false,
-      // Set the initial screen of the app to the LoginScreen
-      home: const LoginScreen(),
+                debugShowCheckedModeBanner: false,
+                // Set the initial screen of the app to the LoginScreen
+                home: const LoginScreen(),
               );
             },
           );
