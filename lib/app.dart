@@ -15,13 +15,21 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // import 'package:permission_handler/permission_handler.dart'; // No longer needed directly here
 
 /// The root widget of the application.
+///
+/// This widget serves as the entry point for the app's UI, setting up
+/// providers, theme data, and localization.
 class App extends StatefulWidget {
+  /// Creates an instance of the [App] widget.
   const App({super.key});
 
   @override
   State<App> createState() => _AppState();
 }
 
+/// The state for the [App] widget.
+///
+/// This class handles the initialization of permissions and the building of the
+/// main application widget.
 class _AppState extends State<App> {
   @override
   void initState() {
@@ -29,7 +37,10 @@ class _AppState extends State<App> {
     _requestPermissionsOnStartup();
   }
 
-  // Request necessary permissions on app startup using PermissionUtil
+  /// Requests necessary permissions on app startup.
+  ///
+  /// This method uses [PermissionUtil] to request storage permissions, which
+  /// is essential for features like offline downloads.
   Future<void> _requestPermissionsOnStartup() async {
     debugPrint('Requesting permissions on app startup via PermissionUtil...');
     // We can call requestStoragePermission which now handles various Android versions
@@ -40,8 +51,17 @@ class _AppState extends State<App> {
     // await PermissionUtil.checkAndRequestAllPermissions(context); // This needs BuildContext
   }
 
-  // Updated helper function to build ThemeData
-  // Accepts optional dynamic ColorScheme
+  /// Builds the [ThemeData] for the application.
+  ///
+  /// This function constructs the theme based on the provided [brightness],
+  /// whether to [useDynamicColor], and an optional [dynamicColorScheme].
+  ///
+  /// - [brightness]: The brightness of the theme (light or dark).
+  /// - [useDynamicColor]: A boolean indicating whether to use the dynamic
+  ///   color scheme from the platform.
+  /// - [dynamicColorScheme]: An optional dynamic color scheme to apply.
+  ///
+  /// Returns the configured [ThemeData].
   ThemeData _buildThemeData(
     Brightness brightness,
     bool useDynamicColor,

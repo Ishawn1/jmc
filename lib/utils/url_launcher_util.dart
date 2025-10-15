@@ -11,10 +11,11 @@ import 'package:app_settings/app_settings.dart';
 import 'package:device_info_plus/device_info_plus.dart'; // Added for device info
 import './permission_util.dart';
 
-/// Utility function to launch a URL.
+/// A utility function to launch a URL.
 ///
-/// Requires the url_launcher package.
-/// Includes basic error handling.
+/// This function uses the `url_launcher` package to open the given URL in an
+/// external application. It includes basic error handling and logs errors in
+/// debug mode.
 Future<void> launchURL(String urlString) async {
   final Uri url = Uri.parse(urlString);
   try {
@@ -37,10 +38,12 @@ Future<void> launchURL(String urlString) async {
   }
 }
 
-/// Utility function to launch a URL with context for showing error messages.
+/// A utility function to launch a URL with context for showing error messages.
 ///
-/// Requires the url_launcher package.
-/// Shows snackbar for errors.
+/// This function is similar to [launchURL] but shows a [SnackBar] with an
+/// error message if the URL cannot be launched.
+///
+/// Returns `true` if the URL was launched successfully, `false` otherwise.
 Future<bool> launchUrlExternal(BuildContext context, String urlString) async {
   final Uri url = Uri.parse(urlString);
   try {
@@ -77,7 +80,9 @@ Future<bool> launchUrlExternal(BuildContext context, String urlString) async {
   }
 }
 
-/// Determines if a URL should be downloaded rather than opened in browser
+/// Determines if a URL should be downloaded directly rather than opened in a browser.
+///
+/// This function checks the URL for common document file extensions.
 bool shouldDownloadDirectly(String url) {
   final String lowerUrl = url.toLowerCase();
 
@@ -92,7 +97,11 @@ bool shouldDownloadDirectly(String url) {
       lowerUrl.endsWith('.pptx');
 }
 
-/// Directly request all storage permissions using PermissionUtil
+/// Requests storage permissions directly, showing a dialog to the user if needed.
+///
+/// This function uses [PermissionUtil] to handle the permission request flow.
+///
+/// Returns `true` if permissions are granted, `false` otherwise.
 Future<bool> requestDirectStoragePermission(BuildContext context) async {
   // First, check if we already have permission
   bool hasPermission = await PermissionUtil.hasStoragePermission();
@@ -155,7 +164,12 @@ Future<bool> requestDirectStoragePermission(BuildContext context) async {
   return hasPermission;
 }
 
-/// Handles URL by downloading if it's a document, otherwise opening in browser
+/// Handles a URL by either downloading it as a file or opening it in a browser.
+///
+/// If the URL points to a document file type, this function will attempt to
+/// download the file. Otherwise, it will open the URL in an external browser.
+///
+/// Returns `true` if the URL was handled successfully, `false` otherwise.
 Future<bool> handleUrl(BuildContext context, String urlString) async {
   debugPrint('Handling URL: $urlString');
 

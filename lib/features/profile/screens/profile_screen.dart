@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generated localizations
 
-/// Placeholder screen for user profile details.
+/// A placeholder screen for displaying user profile details.
+///
+/// This screen is intended to be developed further to show user-specific
+/// information and settings.
 class ProfileScreen extends StatelessWidget {
+  /// Creates an instance of [ProfileScreen].
   const ProfileScreen({super.key});
 
   @override

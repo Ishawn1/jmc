@@ -82,19 +82,27 @@ String _getEnglishCategoryNameFromKey(String categoryKey) {
   }
 }
 
-/// Displays a grid of available municipal services with filtering.
+/// A screen that displays a grid of available municipal services with filtering.
+///
+/// This screen allows users to view a list of services, filter them by
+/// category, and tap on a service to see more details.
 class ServicesListScreen extends StatefulWidget {
+  /// Creates an instance of [ServicesListScreen].
   const ServicesListScreen({super.key});
 
   @override
   State<ServicesListScreen> createState() => _ServicesListScreenState();
 }
 
+/// The state for the [ServicesListScreen].
+///
+/// This class manages the state of the screen, including the selected filter
+/// category and the filtered list of services.
 class _ServicesListScreenState extends State<ServicesListScreen> {
-  // Store the key of the selected category
+  /// The key of the currently selected filter category.
   String _selectedCategoryKey = 'servicesFilterChipAll';
 
-  // Filter the services based on the selected category
+  /// Returns a filtered list of service items based on the selected category.
   List<ServiceItem> get _filteredServiceItems {
     if (_selectedCategoryKey == 'servicesFilterChipAll') {
       return serviceItems; // Use the new serviceItems list

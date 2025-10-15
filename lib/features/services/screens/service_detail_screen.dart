@@ -5,10 +5,17 @@ import '../../../utils/localization_utils.dart'; // Import the shared helper
 
 // Removed the duplicate helper function and TODO comment
 
-/// Displays details for a selected service.
+/// A screen that displays the details for a selected service.
+///
+/// This screen shows the service's icon, name, and ID, along with a placeholder
+/// for additional details.
 class ServiceDetailScreen extends StatelessWidget {
+  /// The service item to display.
   final ServiceItem serviceItem;
 
+  /// Creates an instance of [ServiceDetailScreen].
+  ///
+  /// Requires a [serviceItem] to be provided.
   const ServiceDetailScreen({super.key, required this.serviceItem});
 
   @override

@@ -4,12 +4,20 @@ import '../../../constants/colors.dart'; // Import colors
 import '../../../models/service_item.dart'; // Import the model
 import '../../../utils/localization_utils.dart'; // Import the shared helper
 
-/// A widget representing a single item in the services grid.
-/// Displays an icon and a label, intended to be placed directly on the background.
+/// A widget that represents a single item in the services grid.
+///
+/// This widget displays an icon and a label for a service and triggers an
+/// `onTap` callback when pressed.
 class ServiceGridItem extends StatelessWidget {
+  /// The service item to display.
   final ServiceItem item;
-  final VoidCallback onTap; // Callback function when tapped
 
+  /// A callback function that is triggered when the item is tapped.
+  final VoidCallback onTap;
+
+  /// Creates an instance of [ServiceGridItem].
+  ///
+  /// Requires a [ServiceItem] and an `onTap` callback.
   const ServiceGridItem({
     super.key,
     required this.item,

@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 
-/// A simple reusable placeholder widget displaying centered text and optional icon.
+/// A reusable placeholder widget that displays a centered message and an
+/// optional icon.
+///
+/// This widget is useful for showing a message when a list is empty or when
+/// there is no data to display.
 class EmptyPlaceholder extends StatelessWidget {
+  /// The message to be displayed.
   final String message;
+
+  /// An optional icon to be displayed above the message.
   final IconData? icon;
+
+  /// The size of the icon.
   final double iconSize;
+
+  /// The color of the icon.
   final Color? iconColor;
 
+  /// Creates an instance of [EmptyPlaceholder].
   const EmptyPlaceholder({
     super.key,
     this.message = 'No data available.', // Default message

@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generated localizations
 import '../../home/screens/home_screen.dart'; // Navigate to home after login
 
-/// A mock login screen.
+/// A mock login screen that provides a user interface for authentication.
 ///
-/// Navigates to HomeScreen upon pressing the login button.
-/// Does not perform real authentication.
+/// This screen includes text fields for a username and password, along with a
+/// login button. Upon pressing the login button, it navigates to the [HomeScreen].
+///
+/// Note: This is a mock implementation and does not perform real authentication.
 class LoginScreen extends StatelessWidget {
+  /// Creates an instance of the [LoginScreen].
   const LoginScreen({super.key});
 
   @override

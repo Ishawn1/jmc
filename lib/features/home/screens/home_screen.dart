@@ -11,18 +11,28 @@ import '../../settings/screens/settings_screen.dart';
 import '../../profile/screens/profile_screen.dart';
 // import '../../../constants/app_constants.dart'; // appTitle is not used here anymore
 
-/// The main screen after login, containing the bottom navigation bar.
+/// The main screen of the application, displayed after a successful login.
+///
+/// This screen features a bottom navigation bar to switch between different
+/// sections of the app, such as Services, Updates, Maps, and Downloads. It also
+/// includes a drawer for accessing settings and user profile information.
 class HomeScreen extends StatefulWidget {
+  /// Creates an instance of [HomeScreen].
   const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+/// The state for the [HomeScreen].
+///
+/// This class manages the state of the home screen, including the currently
+/// selected tab index and the corresponding screen to display.
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0; // State for selected tab index
 
-  // List of the screens for each tab
+  /// A list of the widgets to be displayed for each tab in the bottom
+  /// navigation bar.
   static const List<Widget> _widgetOptions = <Widget>[
     ServicesListScreen(),
     UpdatesListScreen(),
@@ -32,13 +42,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // No longer need static titles list, will get from l10n based on index
 
+  /// Handles the tap event on a bottom navigation bar item.
+  ///
+  /// Updates the `_selectedIndex` to switch to the selected tab.
   void _onItemTapped(int index) {
     setState(() { // Update the state to change the screen
       _selectedIndex = index;
     });
   }
 
-  // Helper to get localized title based on index
+  /// Returns the localized title for the app bar based on the selected index.
   String _getLocalizedTitle(BuildContext context, int index) {
     final l10n = AppLocalizations.of(context)!;
     switch (index) {

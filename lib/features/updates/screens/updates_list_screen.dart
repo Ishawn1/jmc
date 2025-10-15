@@ -11,8 +11,12 @@ final List<Map<String, String>> mockUpdates = [
 ];
 // --- END MOCK DATA ---
 
-/// Displays a list of recent updates or notifications.
+/// A screen that displays a list of recent updates or notifications.
+///
+/// This screen uses mock data to show a list of updates, and it will be
+/// connected to a real data source in the future.
 class UpdatesListScreen extends StatelessWidget {
+  /// Creates an instance of [UpdatesListScreen].
   const UpdatesListScreen({super.key});
 
   @override

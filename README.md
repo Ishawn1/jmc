@@ -2,46 +2,64 @@
 
 A Flutter application for accessing Jamnagar Municipal Corporation (JMC) services and information.
 
+## Overview
+
+This application serves as a mobile portal for the citizens of Jamnagar to access various municipal services, receive updates, and find important information. It is designed to be user-friendly, accessible, and multilingual, supporting English, Gujarati, and Hindi.
+
 ## Features
 
-*   **Services:** Access various JMC services like Property Tax, Water Bill payments, etc. (Features under development)
-*   **Updates:** View latest news and updates from JMC.
-*   **Maps:** Locate important JMC facilities and points of interest.
-*   **Downloads:** Access downloadable forms and documents. This includes a robust **offline downloads** feature, allowing users to save documents locally for viewing without an internet connection. Downloaded files can be opened using the device's native viewers.
-*   **Multilingual Support:** Available in English, Gujarati, and Hindi.
-*   **User Authentication:** Secure login for accessing personalized services.
-*   **Filterable Services:** Filter services based on categories.
+*   **Services:** A comprehensive list of JMC services, including:
+    *   Property and water tax payments
+    *   Professional tax services
+    *   Applications for various certificates (birth, death, marriage, etc.)
+    *   Development permissions and other applications
+*   **Updates:** A list of recent news and updates from the JMC.
+*   **Maps:** A placeholder for future integration of maps to locate JMC facilities.
+*   **Downloads:** A repository of downloadable forms and documents, with support for offline access.
+*   **Offline Downloads:** Users can save documents locally for viewing without an internet connection.
+*   **Multilingual Support:** The app is available in English, Gujarati, and Hindi.
+*   **Theme Customization:** Users can switch between light, dark, and system default themes, and toggle dynamic colors on supported devices.
 
-## Permissions
+## Project Structure
 
-To provide the offline downloads functionality, the JMC App requires access to your device's storage:
+The project follows a feature-first architecture, with the main components organized as follows:
 
-*   **Android:** The app will request "Files and Media" or "Storage" permission. This is necessary to save downloaded documents to your device.
-    *   For devices running Android 13 and above, the app utilizes the more granular media permissions (e.g., for images, videos, audio if applicable to downloaded content types) while still ensuring general document downloads are supported.
-    *   For older Android versions, standard storage permissions are requested.
-*   **iOS:** Standard permissions for accessing and saving files will be requested when you use the download feature.
-
-The app is designed to request these permissions only when needed for the download functionality and provides clear prompts.
+*   `lib/`: The root directory for the application's Dart code.
+    *   `main.dart`: The entry point of the application.
+    *   `app.dart`: The root widget of the application, where providers, themes, and localization are set up.
+    *   `features/`: Each feature of the application is organized into its own subdirectory, containing its screens, widgets, and other related files.
+    *   `models/`: Data models used throughout the application.
+    *   `providers/`: State management providers for managing application-wide state.
+    *   `services/`: Services for interacting with external resources, such as databases and APIs.
+    *   `utils/`: Utility functions and helper classes.
+    *   `widgets/`: Reusable widgets that are shared across multiple features.
 
 ## Getting Started
 
 ### Prerequisites
 
-*   Flutter SDK: Make sure you have Flutter installed. See [Flutter installation guide](https://flutter.dev/docs/get-started/install).
-*   An IDE like VS Code or Android Studio with Flutter plugins.
+*   Flutter SDK: Ensure you have Flutter installed. For installation instructions, see the [Flutter documentation](https://flutter.dev/docs/get-started/install).
+*   An IDE such as Visual Studio Code or Android Studio, with the Flutter and Dart plugins installed.
 
-### Installation & Running
+### Installation and Running
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository_url> # Replace with the actual URL after uploading
+    git clone <repository_url>
     cd jmc_app
     ```
+
 2.  **Install dependencies:**
     ```bash
     flutter pub get
     ```
-3.  **Run the app:**
+
+3.  **Run the localization generator:**
+    ```bash
+    flutter gen-l10n
+    ```
+
+4.  **Run the app:**
     ```bash
     flutter run
     ```
@@ -50,10 +68,10 @@ The app is designed to request these permissions only when needed for the downlo
 
 *   **Framework:** Flutter
 *   **Language:** Dart
-*   **Localization:** `flutter_localizations`, `intl`
+*   **State Management:** Provider
+*   **Localization:** `flutter_localizations` and `intl`
+*   **Database:** `sqflite` for local storage
 
 ## Contributing
 
-Contributions are welcome! Please follow standard fork & pull request workflows.
-
-
+Contributions are welcome. Please follow the standard fork and pull request workflow.

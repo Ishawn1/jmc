@@ -3,7 +3,10 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 
-/// A utility class to manage app permissions
+/// A utility class for managing application permissions.
+///
+/// This class provides static methods to check, request, and handle storage
+/// permissions for both Android and iOS platforms.
 class PermissionUtil {
   static Future<int> _getAndroidSdkInt() async {
     if (Platform.isAndroid) {
@@ -14,7 +17,12 @@ class PermissionUtil {
     return 0;
   }
 
-  /// Check if storage permission is granted
+  /// Checks if the application has been granted storage permission.
+  ///
+  /// This method handles the different permission requirements for various
+  /// Android versions and iOS.
+  ///
+  /// Returns `true` if storage permission is granted, `false` otherwise.
   static Future<bool> hasStoragePermission() async {
     if (Platform.isAndroid || Platform.isIOS) {
       debugPrint('Checking storage permissions...');
@@ -60,7 +68,12 @@ class PermissionUtil {
     return true; // For desktop platforms
   }
 
-  /// Request storage permission
+  /// Requests storage permission from the user.
+  ///
+  /// This method handles the different permission requests for various
+  /// Android versions and iOS.
+  ///
+  /// Returns `true` if storage permission is granted, `false` otherwise.
   static Future<bool> requestStoragePermission() async {
     if (Platform.isAndroid || Platform.isIOS) {
       debugPrint('Requesting storage permissions...');
@@ -128,7 +141,8 @@ class PermissionUtil {
     return true; // For desktop platforms
   }
 
-  /// Show dialog explaining permission needs to user
+  /// Shows a dialog to the user explaining the need for storage permission
+  /// and providing a button to open the app settings.
   static Future<void> showPermissionDialog(BuildContext context) async {
     return showDialog(
       context: context,
@@ -158,7 +172,11 @@ class PermissionUtil {
     );
   }
 
-  /// Check and request all permissions needed by the app
+  /// Checks and requests all necessary permissions for the app.
+  ///
+  /// This method first checks if storage permission is granted. If not, it
+  /// requests the permission and, if still not granted, shows a dialog
+  /// explaining the need for the permission.
   static Future<void> checkAndRequestAllPermissions(
       BuildContext context) async {
     // Request storage permission

@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// Enum to represent the user's theme preference
-enum ThemeModeSetting { light, dark, system }
+/// An enum to represent the user's theme preference.
+enum ThemeModeSetting {
+  /// Light theme.
+  light,
 
-/// Manages the application's theme settings, including theme mode
-/// (light, dark, system) and dynamic color usage.
+  /// Dark theme.
+  dark,
+
+  /// System default theme.
+  system,
+}
+
+/// A provider class for managing the application's theme settings.
 ///
-/// Persists settings using SharedPreferences.
+/// This class handles the theme mode (light, dark, or system) and the use of
+/// dynamic colors. It persists the user's preferences using [SharedPreferences].
 class ThemeProvider extends ChangeNotifier {
   late SharedPreferences _prefs;
 
@@ -19,7 +28,7 @@ class ThemeProvider extends ChangeNotifier {
   ThemeModeSetting _themeModeSetting = ThemeModeSetting.system;
   bool _useDynamicColor = false; // Default to false for broader compatibility
 
-  // Public getters
+  /// The current theme mode of the application.
   ThemeMode get themeMode {
     switch (_themeModeSetting) {
       case ThemeModeSetting.light:
@@ -32,15 +41,19 @@ class ThemeProvider extends ChangeNotifier {
     }
   }
 
+  /// The user's selected theme mode setting.
   ThemeModeSetting get themeModeSetting => _themeModeSetting;
+
+  /// A boolean indicating whether dynamic colors are enabled.
   bool get useDynamicColor => _useDynamicColor;
 
+  /// Creates an instance of [ThemeProvider] and loads the saved preferences.
   ThemeProvider() {
     // Initialize immediately, loading preferences asynchronously
     _loadPreferences();
   }
 
-  // Load saved preferences
+  /// Loads the saved theme preferences from [SharedPreferences].
   Future<void> _loadPreferences() async {
     _prefs = await SharedPreferences.getInstance();
 
@@ -59,7 +72,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Set the theme mode setting and save it
+  /// Sets the theme mode setting and saves it to [SharedPreferences].
   Future<void> setThemeModeSetting(ThemeModeSetting setting) async {
     if (_themeModeSetting == setting) return; // No change
 
@@ -68,7 +81,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Set the dynamic color usage and save it
+  /// Sets the dynamic color usage and saves it to [SharedPreferences].
   Future<void> setUseDynamicColor(bool enabled) async {
     if (_useDynamicColor == enabled) return; // No change
 

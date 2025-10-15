@@ -4,15 +4,21 @@ import '../../../models/offline_download_item.dart';
 import '../../../providers/offline_downloads_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+/// A card widget that displays information about an offline download item.
+///
+/// This widget shows the item's name, category, and download status, and
+/// provides actions such as opening, exporting, or deleting the downloaded file.
 class OfflineDownloadCard extends StatelessWidget {
+  /// The offline download item to display.
   final OfflineDownloadItem item;
 
+  /// Creates an instance of [OfflineDownloadCard].
   const OfflineDownloadCard({
     Key? key,
     required this.item,
   }) : super(key: key);
 
-  // Helper to get an appropriate icon based on file type
+  /// Returns an appropriate icon for a given file type.
   IconData _getIconForType(String fileType) {
     switch (fileType.toLowerCase()) {
       case 'pdf':
@@ -29,7 +35,7 @@ class OfflineDownloadCard extends StatelessWidget {
     }
   }
 
-  // Helper to get a human-readable date string
+  /// Returns a human-readable date string (e.g., 'Jan 01, 2023').
   String _getFormattedDate(BuildContext context, DateTime? date) {
     if (date == null) return '';
 
@@ -38,7 +44,7 @@ class OfflineDownloadCard extends StatelessWidget {
     return '$month ${date.day}, ${date.year}';
   }
 
-  // Helper to get short month name
+  /// Returns the short name of a month (e.g., 'Jan').
   String _getShortMonthName(BuildContext context, int month) {
     final l10n = AppLocalizations.of(context)!;
 
@@ -159,6 +165,7 @@ class OfflineDownloadCard extends StatelessWidget {
     );
   }
 
+  /// Builds the action buttons for the card based on the download status.
   Widget _buildActionButtons(
     BuildContext context,
     OfflineDownloadsProvider provider,

@@ -5,6 +5,11 @@ import '../services/download_service.dart';
 import '../features/downloads/screens/downloads_list_screen.dart';
 import 'dart:io';
 
+/// A provider class for managing offline downloads.
+///
+/// This class handles the downloading, storing, and retrieving of files for
+/// offline access. It interacts with [DatabaseService] to persist download
+/// metadata and with [DownloadService] to perform the actual file downloads.
 class OfflineDownloadsProvider extends ChangeNotifier {
   final DatabaseService _databaseService = DatabaseService.instance;
   final DownloadService _downloadService = DownloadService.instance;
@@ -13,18 +18,23 @@ class OfflineDownloadsProvider extends ChangeNotifier {
   bool _isLoading = false;
   String? _error;
 
-  // Getters
+  /// A list of all offline download items.
   List<OfflineDownloadItem> get offlineDownloads =>
       List.unmodifiable(_offlineDownloads);
+
+  /// A boolean indicating whether the provider is currently loading data.
   bool get isLoading => _isLoading;
+
+  /// An error message, if any, that occurred during an operation.
   String? get error => _error;
 
-  // Constructor
+  /// Creates an instance of [OfflineDownloadsProvider] and loads the offline
+  /// downloads from the database.
   OfflineDownloadsProvider() {
     loadOfflineDownloads();
   }
 
-  // Load all offline downloads from database
+  /// Loads all offline downloads from the database.
   Future<void> loadOfflineDownloads() async {
     _setLoading(true);
     try {
@@ -38,7 +48,11 @@ class OfflineDownloadsProvider extends ChangeNotifier {
     }
   }
 
-  // Download a file and save to offline storage
+  /// Downloads a file and saves it for offline access.
+  ///
+  /// This method checks if the item is already being downloaded or has been
+  /// downloaded. If not, it initiates the download process and updates the
+  /// UI with the progress.
   Future<void> downloadFile(DownloadItem item) async {
     // Check if the item is already in the downloads list
     final String itemId = item.url.hashCode.toString();
@@ -92,7 +106,7 @@ class OfflineDownloadsProvider extends ChangeNotifier {
     }
   }
 
-  // Cancel an ongoing download
+  /// Cancels an ongoing download.
   Future<void> cancelDownload(String id) async {
     await _downloadService.cancelDownload(id);
 
@@ -107,7 +121,7 @@ class OfflineDownloadsProvider extends ChangeNotifier {
     }
   }
 
-  // Delete an offline download
+  /// Deletes an offline download from the device.
   Future<void> deleteOfflineDownload(String id) async {
     final item = _offlineDownloads.where((d) => d.id == id).firstOrNull;
     if (item != null) {
@@ -119,7 +133,7 @@ class OfflineDownloadsProvider extends ChangeNotifier {
     }
   }
 
-  // Open a downloaded file
+  /// Opens a downloaded file.
   Future<void> openOfflineDownload(String id) async {
     final item = _offlineDownloads.where((d) => d.id == id).firstOrNull;
 
@@ -176,7 +190,9 @@ class OfflineDownloadsProvider extends ChangeNotifier {
     }
   }
 
-  // Export a file to external storage
+  /// Exports a downloaded file to external storage.
+  ///
+  /// Returns `true` if the file was exported successfully, `false` otherwise.
   Future<bool> exportFile(String id) async {
     final item = _offlineDownloads.where((d) => d.id == id).firstOrNull;
     if (item != null && item.status == DownloadStatus.downloaded) {

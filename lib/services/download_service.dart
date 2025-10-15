@@ -12,8 +12,15 @@ import '../models/offline_download_item.dart';
 import 'database_service.dart';
 import '../utils/permission_util.dart';
 
+/// A service class for managing file downloads.
+///
+/// This class provides a singleton instance to handle all download-related
+/// operations, including checking permissions, managing file paths, and
+/// downloading files with progress tracking.
 class DownloadService {
   static final DownloadService _instance = DownloadService._internal();
+
+  /// The singleton instance of [DownloadService].
   static DownloadService get instance => _instance;
 
   final Dio _dio = Dio();
@@ -22,13 +29,15 @@ class DownloadService {
 
   DownloadService._internal();
 
-  // Check and request storage permissions
+  /// Checks and requests storage permissions.
+  ///
+  /// Returns `true` if storage permissions are granted, `false` otherwise.
   Future<bool> checkPermissions() async {
     // Use the improved PermissionUtil instead of duplicating permission logic
     return await PermissionUtil.hasStoragePermission();
   }
 
-  // Get directory for storing files
+  /// Returns the local directory path for storing downloaded files.
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
     final downloadsDir = Directory('${directory.path}/offline_downloads');
@@ -40,7 +49,7 @@ class DownloadService {
     return downloadsDir.path;
   }
 
-  // Generate file name based on URL and document name
+  /// Generates a sanitized file name based on the item's name and URL.
   String _generateFileName(String url, String name) {
     final uri = Uri.parse(url);
     final path = uri.path;
@@ -65,7 +74,11 @@ class DownloadService {
     return '$sanitizedName$extension';
   }
 
-  // Direct download of a URL (for use with in-app link handling)
+  /// Downloads a file directly from a URL.
+  ///
+  /// This method is used for handling in-app link clicks and other direct
+  /// download requests. It checks for existing downloads and permissions
+  /// before initiating the download.
   Future<OfflineDownloadItem?> downloadFromUrl(String url, String name,
       {Function(double)? onProgress}) async {
     try {
@@ -139,7 +152,10 @@ class DownloadService {
     }
   }
 
-  // Download file and save it to local storage
+  /// Downloads a file and saves it to local storage.
+  ///
+  /// This method handles the entire download process, including checking
+  /// permissions, tracking progress, and updating the database.
   Future<OfflineDownloadItem> downloadFile(OfflineDownloadItem item,
       {Function(double)? onProgress}) async {
     try {
@@ -226,7 +242,7 @@ class DownloadService {
     }
   }
 
-  // Cancel an ongoing download
+  /// Cancels an ongoing download.
   Future<void> cancelDownload(String id) async {
     if (_cancelTokens.containsKey(id)) {
       _cancelTokens[id]?.cancel('Download canceled by user');
@@ -240,7 +256,7 @@ class DownloadService {
     }
   }
 
-  // Delete a downloaded file
+  /// Deletes a downloaded file from the device and the database.
   Future<void> deleteDownloadedFile(OfflineDownloadItem item) async {
     if (item.localFilePath != null &&
         item.status == DownloadStatus.downloaded) {
@@ -253,7 +269,11 @@ class DownloadService {
     }
   }
 
-  // Open a downloaded file
+  /// Opens a downloaded file using the default application for its type.
+  ///
+  /// This method tries multiple strategies to open the file, including using
+  /// the `open_file` package, platform-specific commands, and sharing as a
+  /// fallback.
   Future<void> openDownloadedFile(OfflineDownloadItem item) async {
     if (item.localFilePath == null ||
         item.status != DownloadStatus.downloaded) {
@@ -381,7 +401,9 @@ class DownloadService {
     }
   }
 
-  // Export file to user's download directory
+  /// Exports a downloaded file to a location of the user's choice.
+  ///
+  /// Returns `true` if the file was exported successfully, `false` otherwise.
   Future<bool> exportFile(OfflineDownloadItem item) async {
     if (item.localFilePath != null &&
         item.status == DownloadStatus.downloaded) {
@@ -405,7 +427,7 @@ class DownloadService {
     return false;
   }
 
-  // Share a downloaded file with other apps
+  /// Shares a downloaded file with other applications.
   Future<void> shareDownloadedFile(OfflineDownloadItem item) async {
     if (item.localFilePath == null ||
         item.status != DownloadStatus.downloaded) {

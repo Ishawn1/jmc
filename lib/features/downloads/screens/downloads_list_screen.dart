@@ -14,12 +14,22 @@ import 'package:app_settings/app_settings.dart'; // Add for opening settings
 import 'package:device_info_plus/device_info_plus.dart'; // Added for device info
 
 // --- DATA MODEL ---
-class DownloadItem {
-  final String name;
-  final String category;
-  final String url;
-  final String? fileType; // e.g., 'pdf', 'doc', 'jpg'
 
+/// Represents a downloadable item.
+class DownloadItem {
+  /// The name of the downloadable item.
+  final String name;
+
+  /// The category to which the item belongs.
+  final String category;
+
+  /// The URL from which the item can be downloaded.
+  final String url;
+
+  /// The file type of the item (e.g., 'pdf', 'doc', 'jpg').
+  final String? fileType;
+
+  /// Creates an instance of [DownloadItem].
   const DownloadItem({
     required this.name,
     required this.category,
@@ -27,7 +37,7 @@ class DownloadItem {
     this.fileType,
   });
 
-  // Helper to guess file type from URL if not provided
+  /// Guesses the file type from the URL if not explicitly provided.
   String get guessedFileType {
     if (fileType != null) return fileType!;
     if (url.toLowerCase().endsWith('.pdf')) return 'pdf';
@@ -629,7 +639,15 @@ final List<String> downloadFilterCategories = [
       .toSet() // Removed unnecessary .toList()
 ];
 
-// Helper function to get localized category name from the English category string
+/// A helper function to get the localized category name from an English category string.
+///
+/// This function uses the `AppLocalizations` class to return the appropriate
+/// translated category name.
+///
+/// - [context]: The build context for accessing localizations.
+/// - [englishCategoryName]: The English name of the category.
+///
+/// Returns the localized category name.
 String _getLocalizedDownloadCategoryName(
     BuildContext context, String englishCategoryName) {
   final l10n = AppLocalizations.of(context)!;
@@ -677,7 +695,10 @@ String _getLocalizedDownloadCategoryName(
   }
 }
 
-// Function to show download success snackbar
+/// Shows a snackbar to indicate that a download was successful.
+///
+/// - [context]: The build context for showing the snackbar.
+/// - [fileName]: The name of the file that was downloaded.
 void _showDownloadSuccessSnackbar(BuildContext context, String fileName) {
   final l10n = AppLocalizations.of(context)!;
   ScaffoldMessenger.of(context).showSnackBar(
@@ -695,14 +716,24 @@ void _showDownloadSuccessSnackbar(BuildContext context, String fileName) {
   );
 }
 
-/// Displays a list of downloadable documents or forms with filtering.
+/// A screen that displays a list of downloadable documents and forms with
+/// filtering capabilities.
+///
+/// This screen includes a tab view to switch between all available downloads
+/// and a list of offline downloads.
 class DownloadsListScreen extends StatefulWidget {
+  /// Creates an instance of [DownloadsListScreen].
   const DownloadsListScreen({super.key});
 
   @override
   State<DownloadsListScreen> createState() => _DownloadsListScreenState();
 }
 
+/// The state for the [DownloadsListScreen].
+///
+/// This class manages the state of the screen, including the search query,
+/// selected category, and tab controller. It also handles the filtering of
+/// download items and the building of the UI.
 class _DownloadsListScreenState extends State<DownloadsListScreen>
     with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
@@ -738,7 +769,7 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     _checkPermissions();
   }
 
-  // Check permissions when the screen loads
+  /// Checks and requests storage permissions when the screen loads.
   Future<void> _checkPermissions() async {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       // Check and request permissions if needed
@@ -753,7 +784,8 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     super.dispose();
   }
 
-  // Filter the downloads based on selected category and search query
+  /// Returns a filtered list of download items based on the selected category
+  /// and search query.
   List<DownloadItem> get _filteredDownloadItems {
     List<DownloadItem> items = allDownloadItems;
 
@@ -774,7 +806,11 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     return items;
   }
 
-  // Helper to get an appropriate icon based on file type
+  /// Returns an appropriate icon for a given file type.
+  ///
+  /// - [fileType]: The file type string (e.g., 'pdf', 'doc').
+  ///
+  /// Returns an [IconData] object.
   IconData _getIconForType(String fileType) {
     switch (fileType.toLowerCase()) {
       case 'pdf':
@@ -791,7 +827,7 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     }
   }
 
-  // Build tab bar for All/Offline tabs
+  /// Builds the tab bar for switching between "All" and "Offline" downloads.
   Widget _buildTabBar(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
@@ -835,7 +871,10 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     );
   }
 
-  // Build the all downloads tab
+  /// Builds the UI for the "All Downloads" tab.
+  ///
+  /// This includes the search bar, category filter, and the list of all
+  /// downloadable items.
   Widget _buildAllDownloadsTab(
     BuildContext context,
     AppLocalizations l10n,
@@ -1060,7 +1099,9 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     );
   }
 
-  // Build the offline downloads tab
+  /// Builds the UI for the "Offline Downloads" tab.
+  ///
+  /// This tab displays a list of downloads that have been saved for offline use.
   Widget _buildOfflineDownloadsTab(
     BuildContext context,
     AppLocalizations l10n,
@@ -1089,7 +1130,14 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     );
   }
 
-  // Directly request all storage permissions
+  /// Requests all necessary storage permissions.
+  ///
+  /// This method first checks if permissions are already granted. If not, it
+  /// shows a dialog explaining why the permissions are needed, then requests
+  /// them. If the permissions are still denied, it prompts the user to open
+  /// the app settings.
+  ///
+  /// Returns `true` if permissions are granted, `false` otherwise.
   Future<bool> _requestAllStoragePermissions(BuildContext context) async {
     // First, check if we already have permission
     bool hasPermission = await PermissionUtil.hasStoragePermission();
@@ -1152,7 +1200,7 @@ class _DownloadsListScreenState extends State<DownloadsListScreen>
     return hasPermission;
   }
 
-  // Show error dialog for permissions
+  /// Shows a snackbar with an error message when storage permissions are denied.
   void _showPermissionError(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

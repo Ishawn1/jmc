@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generated localizations
 import '../../../widgets/empty_placeholder.dart'; // Use the reusable placeholder
 
-/// Placeholder screen for map-related features.
+/// A placeholder screen for map-related features.
 ///
-/// Actual map integration (e.g., using google_maps_flutter)
-/// will be implemented later.
+/// This screen is intended to be replaced with a full map integration in a
+/// future update. Currently, it displays a placeholder message.
 class MapsScreen extends StatelessWidget {
+  /// Creates an instance of [MapsScreen].
   const MapsScreen({super.key});
 
   @override

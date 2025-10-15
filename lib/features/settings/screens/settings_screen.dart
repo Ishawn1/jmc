@@ -3,8 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generated localizations
 import '../../../providers/theme_provider.dart'; // Import ThemeProvider
 
-/// Screen for managing application settings, including theme options.
+/// A screen for managing application settings, including theme options.
+///
+/// This screen allows the user to switch between light, dark, and system default
+/// theme modes, and to toggle the use of dynamic colors on supported devices.
 class SettingsScreen extends StatelessWidget {
+  /// Creates an instance of [SettingsScreen].
   const SettingsScreen({super.key});
 
   @override

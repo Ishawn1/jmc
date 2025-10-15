@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import generated localizations
 
-/// Gets the localized service name based on its ID/key.
+/// Gets the localized service name based on its ID.
 ///
-/// This function maps service IDs to their corresponding localization keys
-/// defined in the .arb files.
+/// This function maps a service ID to its corresponding localization key
+/// defined in the `.arb` files and returns the localized string.
 String getLocalizedServiceName(BuildContext context, String serviceId) {
   // Ensure AppLocalizations is available, handle null case gracefully if needed
   final l10n = AppLocalizations.of(context);

@@ -1,21 +1,54 @@
 import 'package:flutter/foundation.dart';
 import '../features/downloads/screens/downloads_list_screen.dart';
 
-/// Represents the status of an offline download
-enum DownloadStatus { notDownloaded, downloading, downloaded, failed }
+/// Represents the status of an offline download.
+enum DownloadStatus {
+  /// The item has not been downloaded yet.
+  notDownloaded,
 
-/// Model class representing an offline download item
+  /// The item is currently being downloaded.
+  downloading,
+
+  /// The item has been successfully downloaded.
+  downloaded,
+
+  /// The download failed.
+  failed,
+}
+
+/// A model class that represents an offline download item.
+///
+/// This class stores information about a downloaded file, including its ID,
+/// name, category, URL, local file path, and download status.
 class OfflineDownloadItem {
+  /// A unique identifier for the download item.
   final String id;
+
+  /// The name of the download item.
   final String name;
+
+  /// The category to which the item belongs.
   final String category;
+
+  /// The original URL of the item.
   final String url;
+
+  /// The file type of the item (e.g., 'pdf', 'doc').
   final String? fileType;
+
+  /// The local path where the file is stored.
   final String? localFilePath;
+
+  /// The current status of the download.
   final DownloadStatus status;
+
+  /// The download progress, from 0.0 to 1.0.
   final double? progress;
+
+  /// The date and time when the download was completed.
   final DateTime? downloadDate;
 
+  /// Creates an instance of [OfflineDownloadItem].
   const OfflineDownloadItem({
     required this.id,
     required this.name,
@@ -28,7 +61,7 @@ class OfflineDownloadItem {
     this.downloadDate,
   });
 
-  // Helper to guess file type from URL if not provided
+  /// Guesses the file type from the URL if not explicitly provided.
   String get guessedFileType {
     if (fileType != null) return fileType!;
     if (url.toLowerCase().endsWith('.pdf')) return 'pdf';
@@ -40,7 +73,7 @@ class OfflineDownloadItem {
     return 'unknown';
   }
 
-  // Create a copy of this item with updated fields
+  /// Creates a copy of this item with updated fields.
   OfflineDownloadItem copyWith({
     String? id,
     String? name,
@@ -65,7 +98,7 @@ class OfflineDownloadItem {
     );
   }
 
-  // Create an OfflineDownloadItem from a DownloadItem
+  /// Creates an [OfflineDownloadItem] from a [DownloadItem].
   factory OfflineDownloadItem.fromDownloadItem(DownloadItem item) {
     return OfflineDownloadItem(
       id: item.url.hashCode.toString(), // Use URL hash as a unique ID
@@ -76,7 +109,7 @@ class OfflineDownloadItem {
     );
   }
 
-  // Convert to map for database storage
+  /// Converts the item to a map for database storage.
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -91,7 +124,7 @@ class OfflineDownloadItem {
     };
   }
 
-  // Create from map for database retrieval
+  /// Creates an [OfflineDownloadItem] from a map retrieved from a database.
   factory OfflineDownloadItem.fromMap(Map<String, dynamic> map) {
     return OfflineDownloadItem(
       id: map['id'],
